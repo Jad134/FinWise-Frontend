@@ -18,13 +18,20 @@
     justify-content: center;
     animation: background-transition 3s forwards ease-in-out;
     z-index: 10;
+    // overflow: visible;
 
+}
+
+.intro-logo-container{
+    // position: relative;
+    overflow: visible;
 }
 
 .intro-logo{
     width: 109px;
     height: 114px;
     animation: logo-move 3s forwards ease-in-out;
+
 }
 
 .intro-headline{
@@ -41,6 +48,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1;
 }
 
 .logo{
