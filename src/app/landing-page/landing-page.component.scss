@@ -1,0 +1,90 @@
+@import "../../styles.scss";
+
+.intro{
+    width: 100vw;
+    height: 100vh;
+    background-color: $main-green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: background-transition 3s forwards ease-in-out;
+    z-index: 10;
+
+}
+
+.intro-logo{
+    width: 109px;
+    height: 114px;
+    animation: logo-move 3s forwards ease-in-out;
+}
+
+.intro-headline{
+    font-size: 52px;
+    font-family: poppins;
+    color: white;
+    font-weight: 600;
+    opacity: 1;
+    animation: text-fade-out 1.5s 1.5s forwards ease-in-out;
+}
+
+.logo-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    width: 109px;
+    height: 114px;
+}
+
+.headline{
+    font-size: 52px;
+    font-family: poppins;
+    color: $main-green;
+    font-weight: 600;
+}
+
+
+
+
+/* Animationen */
+@keyframes background-transition {
+    0% {
+      background: $main-green; /* Start: Dunkelgrün */
+    }
+    100% {
+      background: white; /* Ende: Weiß */
+      opacity: 0; /* lasse den Hintergrund entgültig verschiwnden, um den hauptcontainer anzuzeigen */
+    }
+  }
+  
+  @keyframes logo-move {
+    0% {
+      transform: translateY(0); /* Start in der Mitte */
+      color: $main-green; /* Dunkelgrün */
+    }
+    100% {
+      transform: translateY(-40vh); /* Nach oben bewegen */
+      color: #66bb6a; /* Hellgrün */
+    }
+  }
+  
+  @keyframes text-fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0; /* Text verschwindet */
+    }
+  }
