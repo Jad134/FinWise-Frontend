@@ -1,11 +1,18 @@
-<section>
-    <div class="main-background">
-        <div class="main-container">
-            <h1 class="welcome">Welcome</h1>
+<app-main-background [headline]="'Welcome'">
+    <section class="section" slot="content">
+        <div class="inputs-container">
+            <div class="user-container">
+                <p>Username Or Email</p>
+                <input placeholder="example@example.com" class="mail-input" type="text">
+            </div>
+            <div class="password-container">
+                <p>Password</p>
+                <input placeholder="●●●●●●●●" class="password-input" [type]="passwordVisible ? 'text' : 'password'">
+                <img (click)="togglePasswordVisibility()" class="eye-img" [src]="passwordVisible ? '/assets/icons/eye-on.svg' : '/assets/icons/eye-off.svg'" alt="">
+                
+            </div>
         </div>
-        <div class="white-main-page">
+        <div class="button-container"></div>
 
-        </div>
-
-    </div>
-</section>
+    </section>
+</app-main-background>
