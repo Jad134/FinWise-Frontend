@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: background-transition 3s forwards ease-in-out;
+    animation: background-transition 2s forwards ease-in-out;
     z-index: 10;
     // overflow: visible;
 
@@ -30,7 +30,7 @@
 .intro-logo{
     width: 109px;
     height: 114px;
-    animation: logo-move 3s forwards ease-in-out;
+    animation: logo-move 1.5s forwards ease-in-out;
 
 }
 
@@ -40,7 +40,7 @@
     color: white;
     font-weight: 600;
     opacity: 1;
-    animation: text-fade-out 1.5s 1.5s forwards ease-in-out;
+    animation: text-fade-out 0.5s 1.5s forwards ease-in-out;
 }
 
 .logo-container{
@@ -54,6 +54,8 @@
 .logo{
     width: 109px;
     height: 114px;
+    opacity: 0;
+    animation: logo-fade-in 1.5s 0.5s forwards ease-in-out; 
 }
 
 .headline{
@@ -63,7 +65,11 @@
     font-weight: 600;
 }
 
-
+.main-content{
+    height: 100vh;
+    width: 100vw;
+    margin-top: 25vh;
+}
 
 
 /* Animationen */
@@ -80,10 +86,14 @@
   @keyframes logo-move {
     0% {
       transform: translateY(0); /* Start in der Mitte */
-      color: $main-green; /* Dunkelgrün */
+      opacity: 1; /* Voll sichtbar */
+    }
+    80% {
+        opacity: 1; /* Immer noch sichtbar, bis kurz vor Ende */
     }
     100% {
-      transform: translateY(-40vh); /* Nach oben bewegen */
+      transform: translateY(-15vh);
+      opacity: 0; /* Nach oben bewegen */
       color: #66bb6a; /* Hellgrün */
     }
   }
@@ -96,3 +106,12 @@
       opacity: 0; /* Text verschwindet */
     }
   }
+
+@keyframes logo-fade-in {
+  0% {
+      opacity: 0; /* Unsichtbar */
+  }
+  100% {
+      opacity: 1; /* Sichtbar */
+  }
+}
