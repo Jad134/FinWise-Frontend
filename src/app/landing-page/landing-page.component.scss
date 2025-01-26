@@ -97,6 +97,10 @@
   font-family: $poppins;
   font-weight: 600;
   cursor: pointer;
+
+  &:active{
+    background-color: $light-green;
+  }
 }
 
 .signup-btn {
@@ -110,6 +114,10 @@
   font-family: $poppins;
   font-weight: 600;
   cursor: pointer;
+
+  &:active{
+    background-color: $main-green;
+  }
 }
 
 .forgot-passwort-link{
