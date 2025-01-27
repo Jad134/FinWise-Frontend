@@ -1,1 +1,37 @@
-<p>sign-up works!</p>
+<app-main-background [headline]="'Create Account'">
+    <section class="section" slot="content">
+        <div class="inputs-container">
+            <div class="input-div">
+                <p>Username</p>
+                <input placeholder="exampleUser22" class="input" type="text">
+            </div>
+            <div class="input-div">
+                <p>Email</p>
+                <input placeholder="example@example.com" class="input" type="email">
+            </div>
+            <div class="input-div">
+                <p>Mobile Number</p>
+                <input placeholder="+49 123 12345678" class="input" type="number">
+            </div>
+            <div class="input-div">
+                <p>Date Of Birth</p>
+                <input placeholder="DD / MM / YYYY" class="input" type="text">
+            </div>
+            <div class="input-div">
+                <p>Password</p>
+                <input placeholder="●●●●●●●●" class="input" type="text">
+            </div>
+            <div class="input-div">
+                <p>Confirm Password</p>
+                <input placeholder="●●●●●●●●" class="input" type="text">
+            </div>
+        </div>
+        <div class="sign-up-container">
+            <div>
+                <p>By continuing, you agree to</p>
+                <p><a class="tos-link" href="">Terms of Use</a> and <a class="pp-link" href="">Privacy Policy</a>.</p>
+            </div>
+            <button class="signup-btn">Sign Up</button>
+        </div>
+    </section>
+</app-main-background>
