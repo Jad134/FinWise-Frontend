@@ -19,11 +19,15 @@
             </div>
             <div class="input-div">
                 <p>Password</p>
-                <input placeholder="●●●●●●●●" class="input" type="text">
+                <input [type]="passwordVisible ? 'text' : 'password'" placeholder="●●●●●●●●" class="input" >
+                <img (click)="togglePasswordVisibility()" class="eye-img"
+                [src]="passwordVisible ? '/assets/icons/eye-on.svg' : '/assets/icons/eye-off.svg'" alt="">
             </div>
             <div class="input-div">
                 <p>Confirm Password</p>
-                <input placeholder="●●●●●●●●" class="input" type="text">
+                <input [type]="confirmedPasswordVisisble ? 'text' : 'password'" placeholder="●●●●●●●●" class="input" >
+                <img (click)="toggleConfirmedPasswordVisibiliy()" class="eye-img"
+                [src]="confirmedPasswordVisisble ? '/assets/icons/eye-on.svg' : '/assets/icons/eye-off.svg'" alt="">
             </div>
         </div>
         <div class="sign-up-container">

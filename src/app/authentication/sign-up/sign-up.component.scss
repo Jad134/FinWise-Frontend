@@ -20,6 +20,7 @@
 
 .input-div {
     padding-inline: 24px;
+    position: relative;
 
     >p {
         font-size: 16px;
@@ -28,6 +29,14 @@
         font-weight: 600;
         padding-left: 24px;
     }
+}
+
+.eye-img {
+    position: absolute;
+    top: 44px;
+    right: 64px;
+    height: 13px;
+    cursor: pointer;
 }
 
 .input {
