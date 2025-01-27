@@ -8,11 +8,17 @@
             <div class="password-container">
                 <p>Password</p>
                 <input placeholder="●●●●●●●●" class="password-input" [type]="passwordVisible ? 'text' : 'password'">
-                <img (click)="togglePasswordVisibility()" class="eye-img" [src]="passwordVisible ? '/assets/icons/eye-on.svg' : '/assets/icons/eye-off.svg'" alt="">
-                
+                <img (click)="togglePasswordVisibility()" class="eye-img"
+                    [src]="passwordVisible ? '/assets/icons/eye-on.svg' : '/assets/icons/eye-off.svg'" alt="">
+
             </div>
         </div>
-        <div class="button-container"></div>
+        <div class="button-container">
+            <button class="login-btn">Log In</button>
+            <a href="">Forgot Password?</a>
+            <button class="signup-btn"> Sign Up</button>
+            <p>Don't have an account? <a class="signup-link" href="">Sign Up</a> </p>
+        </div>
 
     </section>
 </app-main-background>

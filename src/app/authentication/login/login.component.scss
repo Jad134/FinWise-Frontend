@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 80px;
 }
 
 .inputs-container {
@@ -24,14 +25,15 @@
     padding-left: 24px;
     font-size: 16px;
     cursor: pointer;
+    font-weight: 600;
 
-    &::placeholder{
+    &::placeholder {
         color: $dark-green;
         font-weight: 400;
     }
 }
 
-.password-input{
+.password-input {
     width: 100%;
     height: 41px;
     border: none;
@@ -39,14 +41,9 @@
     border-radius: 50px;
     padding-left: 24px;
     font-size: 16px;
-    // background-image: url('../../../../public/assets/icons/eye-off.svg');
-    // background-repeat: no-repeat;
-    // background-position: calc(100% - 15px) center;
-    // background-size: 32px;
-    // cursor: pointer;
+    font-weight: 600;
 
-
-    &::placeholder{
+    &::placeholder {
         color: $dark-green;
         font-weight: 400;
     }
@@ -55,7 +52,7 @@
 .user-container {
     padding-inline: 48px;
 
-    >p{
+    >p {
         font-size: 16px;
         color: $fence-green;
         font-family: $poppins;
@@ -69,7 +66,7 @@
     position: relative;
 
 
-    >p{
+    >p {
         font-size: 16px;
         color: $fence-green;
         font-family: $poppins;
@@ -78,10 +75,71 @@
     }
 }
 
-.eye-img{
+.eye-img {
     position: absolute;
     top: 44px;
     right: 40px;
     height: 13px;
     cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    >a {
+        text-decoration: none;
+        color: $fence-green;
+        font-family: $poppins;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    >p {
+        font-family: $poppins;
+        font-size: 12px;
+        color: $fence-green;
+    }
+}
+
+.login-btn {
+    width: 207px;
+    height: 45px;
+    border-radius: 48px;
+    border: none;
+    background-color: $main-green;
+    font-size: 20px;
+    color: $fence-green;
+    font-family: $poppins;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:active {
+        background-color: $light-green;
+    }
+}
+
+.signup-btn {
+    width: 207px;
+    height: 45px;
+    border-radius: 48px;
+    border: none;
+    background-color: $light-green;
+    font-size: 20px;
+    color: $fence-green;
+    font-family: $poppins;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:active {
+        background-color: $main-green;
+    }
+}
+
+.signup-link {
+    text-decoration: none;
+    font-family: $poppins;
+    color: lightblue;
 }
