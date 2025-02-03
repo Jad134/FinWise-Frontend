@@ -8,5 +8,5 @@ export class ApiUrlsService {
   constructor() { }
 
   BASE_URL = 'http://127.0.0.1:8000/api';
-  REGISTER = `${this.BASE_URL}/registration/`;
+  REGISTER_URL = `${this.BASE_URL}/registration/`;
 }

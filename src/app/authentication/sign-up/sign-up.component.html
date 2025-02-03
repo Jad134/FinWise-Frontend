@@ -3,29 +3,29 @@
         <div class="inputs-container">
             <div class="input-div">
                 <p>Username</p>
-                <input placeholder="exampleUser22" class="input" type="text">
+                <input [(ngModel)]="user.username" placeholder="exampleUser22" class="input" type="text">
             </div>
             <div class="input-div">
                 <p>Email</p>
-                <input placeholder="example@example.com" class="input" type="email">
+                <input [(ngModel)]="user.email" placeholder="example@example.com" class="input" type="email">
             </div>
             <div class="input-div">
                 <p>Mobile Number</p>
-                <input placeholder="+49 123 12345678" class="input" type="number">
+                <input [(ngModel)]="user.mobile_number" placeholder="+49 123 12345678" class="input" type="number">
             </div>
             <div class="input-div">
                 <p>Date Of Birth</p>
-                <input placeholder="DD / MM / YYYY" class="input" type="text">
+                <input [(ngModel)]="user.date_of_birth" placeholder="DD / MM / YYYY" class="input" type="text">
             </div>
             <div class="input-div">
                 <p>Password</p>
-                <input [type]="passwordVisible ? 'text' : 'password'" placeholder="●●●●●●●●" class="input" >
+                <input [(ngModel)]="user.password" [type]="passwordVisible ? 'text' : 'password'" placeholder="●●●●●●●●" class="input" >
                 <img (click)="togglePasswordVisibility()" class="eye-img"
                 [src]="passwordVisible ? '/assets/icons/eye-on.svg' : '/assets/icons/eye-off.svg'" alt="">
             </div>
             <div class="input-div">
                 <p>Confirm Password</p>
-                <input [type]="confirmedPasswordVisisble ? 'text' : 'password'" placeholder="●●●●●●●●" class="input" >
+                <input [(ngModel)]="user.confirm_password" [type]="confirmedPasswordVisisble ? 'text' : 'password'" placeholder="●●●●●●●●" class="input" >
                 <img (click)="toggleConfirmedPasswordVisibiliy()" class="eye-img"
                 [src]="confirmedPasswordVisisble ? '/assets/icons/eye-on.svg' : '/assets/icons/eye-off.svg'" alt="">
             </div>
@@ -35,7 +35,7 @@
                 <p>By continuing, you agree to</p>
                 <p><a class="tos-link" href="">Terms of Use</a> and <a class="pp-link" href="">Privacy Policy</a>.</p>
             </div>
-            <button class="signup-btn">Sign Up</button>
+            <button (click)="registerUser()" class="signup-btn">Sign Up</button>
         </div>
     </section>
 </app-main-background>
