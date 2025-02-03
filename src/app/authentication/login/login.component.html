@@ -16,8 +16,8 @@
         <div class="button-container">
             <button class="login-btn">Log In</button>
             <a href="">Forgot Password?</a>
-            <button class="signup-btn"> Sign Up</button>
-            <p>Don't have an account? <a class="signup-link" href="">Sign Up</a> </p>
+            <button [routerLink]="'/sign-up'" class="signup-btn"> Sign Up</button>
+            <p>Don't have an account? <a class="signup-link" [routerLink]="'/sign-up'" >Sign Up</a> </p>
         </div>
 
     </section>
