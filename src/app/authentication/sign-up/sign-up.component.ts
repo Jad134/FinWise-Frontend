@@ -15,12 +15,12 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent {
 
-
+  constructor(private http: HttpClient, private router: Router) {}
   
   passwordVisible = false;
   confirmedPasswordVisisble = false;
   apiService = inject(ApiUrlsService)
-  constructor(private http: HttpClient, private router: Router) {}
+
   user = {
     username: '',
     email: '',
@@ -30,9 +30,11 @@ export class SignUpComponent {
     confirm_password: ''
   };
 
+
   togglePasswordVisibility(): void {
     this.passwordVisible = !this.passwordVisible;
   }
+
 
   toggleConfirmedPasswordVisibiliy(): void {
     this.confirmedPasswordVisisble = !this.confirmedPasswordVisisble;
@@ -42,16 +44,20 @@ export class SignUpComponent {
   registerUser() {
     this.http.post(this.apiService.REGISTER_URL, this.user).subscribe({
       next: (response) => {
-        console.log('Registrierung erfolgreich:', response);
+        console.log('✅ Registrierung erfolgreich:', response);
         alert('Registrierung erfolgreich!');
         this.router.navigate(['/login']);
       },
-      error: (error) => {
-        console.error('Registrierungsfehler:', error);
-        alert('Fehler bei der Registrierung');
+      error: ({ error }) => {
+        console.error('❌ Registrierungsfehler:', error);
+  
+        // Falls das Backend Fehler zurückgibt, einfach direkt in die Konsole schreiben
+        if (error) console.log('❌ Fehlermeldungen vom Server:', error);
+        else console.log('❌ Unbekannter Fehler aufgetreten.');
       }
     });
   }
+  
 }
 
 

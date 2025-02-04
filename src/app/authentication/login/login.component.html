@@ -3,18 +3,18 @@
         <div class="inputs-container">
             <div class="user-container">
                 <p>Username Or Email</p>
-                <input placeholder="example@example.com" class="mail-input" type="text">
+                <input [(ngModel)]="user.username" placeholder="example@example.com" class="mail-input" type="text">
             </div>
             <div class="password-container">
                 <p>Password</p>
-                <input placeholder="●●●●●●●●" class="password-input" [type]="passwordVisible ? 'text' : 'password'">
+                <input [(ngModel)]="user.password" placeholder="●●●●●●●●" class="password-input" [type]="passwordVisible ? 'text' : 'password'">
                 <img (click)="togglePasswordVisibility()" class="eye-img"
                     [src]="passwordVisible ? '/assets/icons/eye-on.svg' : '/assets/icons/eye-off.svg'" alt="">
 
             </div>
         </div>
         <div class="button-container">
-            <button class="login-btn">Log In</button>
+            <button (click)="login()" class="login-btn">Log In</button>
             <a href="">Forgot Password?</a>
             <button [routerLink]="'/sign-up'" class="signup-btn"> Sign Up</button>
             <p>Don't have an account? <a class="signup-link" [routerLink]="'/sign-up'" >Sign Up</a> </p>
