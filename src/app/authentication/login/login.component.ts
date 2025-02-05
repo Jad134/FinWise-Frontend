@@ -21,6 +21,7 @@ export class LoginComponent {
   passwordVisible = false;
   usernameInvalid = false;
   passwordInvalid = false;
+  showNotification = false;
   user = {
     username: '',
     password: '',
@@ -44,6 +45,11 @@ export class LoginComponent {
         if(error){
           this.usernameInvalid = true;
           this.passwordInvalid = true;
+          this.showNotification = true;
+
+          setTimeout(() => {
+            this.showNotification = false;
+          }, 4000);
         }
       }
     })
