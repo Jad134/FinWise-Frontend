@@ -149,7 +149,7 @@ input.input-error {
 }
 
 .visible {
-    animation: movein 0.5s ease forwards, moveout 0.5s 3s ease forwards;
+    animation: movein 1.5s ease forwards, moveout 2.5s 5s ease forwards;
   }
 
   #notif {
@@ -158,7 +158,7 @@ input.input-error {
     height: 100px;
     background: #e40000;
     color: white;
-    border-radius: 40px;
+    border-radius: 50px;
     font-size: 18px;
     display: flex;
     justify-content: center;
@@ -170,13 +170,13 @@ input.input-error {
 
 
   @keyframes movein {
-    from { left: -200px; }
+    from { left: -4000px; }
     to   { left: 40px; }
   }
   
   @keyframes moveout {
     from { left: 40px; }
-    to   { left: -400px; }
+    to   { left: -4000px; }
   }
   
   /*@keyframes movein {

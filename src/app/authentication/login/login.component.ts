@@ -43,17 +43,23 @@ export class LoginComponent {
       error: ({ error }) => {
         console.error('❌ LogInfehler:', error);
         if (error) {
-          this.usernameInvalid = true;
-          this.passwordInvalid = true;
-          if (!this.showNotification) {
-            this.showNotification = true;
-            
-            setTimeout(() => {
-              this.showNotification = false;
-            }, 4000);
-          }
+          this.validationControl()
+
         }
       }
     })
+  }
+
+
+  validationControl() {
+    this.usernameInvalid = true;
+    this.passwordInvalid = true;
+    if (!this.showNotification) {
+      this.showNotification = true;
+
+      setTimeout(() => {
+        this.showNotification = false;
+      }, 6000);
+    }
   }
 }
