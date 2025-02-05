@@ -153,6 +153,7 @@ input.input-error {
   }
 
   #notif {
+    font-family: $poppins;
     width: 80%;
     height: 100px;
     background: #e40000;
@@ -170,11 +171,11 @@ input.input-error {
 
   @keyframes movein {
     from { left: -200px; }
-    to   { left: 10px; }
+    to   { left: 40px; }
   }
   
   @keyframes moveout {
-    from { left: 10px; }
+    from { left: 40px; }
     to   { left: -400px; }
   }
   
