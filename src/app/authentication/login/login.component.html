@@ -3,11 +3,11 @@
         <div class="inputs-container">
             <div class="user-container">
                 <p>Username Or Email</p>
-                <input [(ngModel)]="user.username" placeholder="example@example.com" class="mail-input" type="text">
+                <input [ngClass]="{'input-error': usernameInvalid}" [(ngModel)]="user.username" placeholder="example@example.com" class="mail-input" type="text">
             </div>
             <div class="password-container">
                 <p>Password</p>
-                <input [(ngModel)]="user.password" placeholder="●●●●●●●●" class="password-input" [type]="passwordVisible ? 'text' : 'password'">
+                <input [ngClass]="{'input-error': usernameInvalid}" [(ngModel)]="user.password" placeholder="●●●●●●●●" class="password-input" [type]="passwordVisible ? 'text' : 'password'">
                 <img (click)="togglePasswordVisibility()" class="eye-img"
                     [src]="passwordVisible ? '/assets/icons/eye-on.svg' : '/assets/icons/eye-off.svg'" alt="">
 

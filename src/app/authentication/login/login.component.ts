@@ -5,21 +5,22 @@ import { FormsModule } from '@angular/forms';
 import { ApiUrlsService } from '../../services/api-urls.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports: [RouterModule, MainBackgroundComponent, FormsModule]
+  imports: [RouterModule, MainBackgroundComponent, FormsModule, CommonModule]
 })
 export class LoginComponent {
 
   constructor(private http: HttpClient, private router: Router) { }
-
-
   apiService = inject(ApiUrlsService)
   passwordVisible = false;
+  usernameInvalid = false;
+  passwordInvalid = false;
   user = {
     username: '',
     password: '',
@@ -40,6 +41,10 @@ export class LoginComponent {
       },
       error: ({ error }) => {
         console.error('❌ LogInfehler:', error);
+        if(error){
+          this.usernameInvalid = true;
+          this.passwordInvalid = true;
+        }
       }
     })
   }
