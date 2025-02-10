@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ApiUrlsService } from '../../services/api-urls.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
   standalone: true,
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
-  imports: [MainBackgroundComponent, FormsModule,]
+  imports: [MainBackgroundComponent, FormsModule, CommonModule]
 })
 export class SignUpComponent {
 
@@ -20,7 +21,8 @@ export class SignUpComponent {
   passwordVisible = false;
   confirmedPasswordVisisble = false;
   apiService = inject(ApiUrlsService)
-  errors:any;
+  errors: Record<string, boolean> = {};
+
 
   user = {
     username: '',
@@ -52,16 +54,13 @@ export class SignUpComponent {
       error: ({ error }) => {
         console.error('❌ Registrierungsfehler:', error);
 
-        // Falls das Backend Fehler zurückgibt, einfach direkt in die Konsole schreiben
         if (error) {
           console.log('❌ Fehlermeldungen vom Server:', error);
           this.errors = {};
 
-        // Alle Fehler durchgehen und in this.errors speichern
         Object.keys(error).forEach((key) => {
           console.log(key); // Zum Debuggen
           this.errors[key] = true; 
-          console.log(this.errors);
 
         });
         }

@@ -3,7 +3,7 @@
         <div class="inputs-container">
             <div class="input-div">
                 <p>Username</p>
-                <input [(ngModel)]="user.username" placeholder="exampleUser22" class="input" type="text">
+                <input   [ngClass]="{'input-error': errors['username']}" [(ngModel)]="user.username" placeholder="exampleUser22" class="input" type="text">
             </div>
             <div class="input-div">
                 <p>Email</p>
