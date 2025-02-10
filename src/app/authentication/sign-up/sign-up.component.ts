@@ -15,11 +15,12 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent {
 
-  constructor(private http: HttpClient, private router: Router) {}
-  
+  constructor(private http: HttpClient, private router: Router) { }
+
   passwordVisible = false;
   confirmedPasswordVisisble = false;
   apiService = inject(ApiUrlsService)
+  errors:any;
 
   user = {
     username: '',
@@ -50,14 +51,25 @@ export class SignUpComponent {
       },
       error: ({ error }) => {
         console.error('❌ Registrierungsfehler:', error);
-  
+
         // Falls das Backend Fehler zurückgibt, einfach direkt in die Konsole schreiben
-        if (error) console.log('❌ Fehlermeldungen vom Server:', error);
+        if (error) {
+          console.log('❌ Fehlermeldungen vom Server:', error);
+          this.errors = {};
+
+        // Alle Fehler durchgehen und in this.errors speichern
+        Object.keys(error).forEach((key) => {
+          console.log(key); // Zum Debuggen
+          this.errors[key] = true; 
+          console.log(this.errors);
+
+        });
+        }
         else console.log('❌ Unbekannter Fehler aufgetreten.');
       }
     });
   }
-  
+
 }
 
 
