@@ -15,7 +15,7 @@
             </div>
             <div class="input-div">
                 <p>Date Of Birth</p>
-                <input [ngClass]="{'input-error': errors['date_of_birth']}" [(ngModel)]="user.date_of_birth" placeholder="DD / MM / YYYY" class="input" type="text">
+                <input maxlength="10" (input)="formatDate()"  [ngClass]="{'input-error': errors['date_of_birth']}" [(ngModel)]="user.date_of_birth" placeholder="DD / MM / YYYY" class="input" type="text">
             </div>
             <div class="input-div">
                 <p>Password</p>

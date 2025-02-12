@@ -69,6 +69,20 @@ export class SignUpComponent {
     });
   }
 
+
+  formatDate() {
+    let value = this.user.date_of_birth.replace(/\D/g, ''); // Entfernt alle Nicht-Zahlen
+  
+    if (value.length >= 2) {
+      value = value.slice(0, 2) + '/' + value.slice(2);
+    }
+    if (value.length >= 5) {
+      value = value.slice(0, 5) + '/' + value.slice(5);
+    }
+  
+    this.user.date_of_birth = value.substring(0, 10); // Begrenze auf max. 10 Zeichen
+  }
+
 }
 
 
