@@ -70,13 +70,13 @@
     color: #4B4544;
 }
 
-.tos-link{
+.tos-link {
     text-decoration: none;
     color: #4B4544;
     font-weight: 600;
 }
 
-.pp-link{
+.pp-link {
     text-decoration: none;
     color: #4B4544;
     font-weight: 600;
@@ -102,4 +102,15 @@
 
 input.input-error {
     border: 1px solid red;
-  }
+}
+
+.wrong-confirm-password {
+    color: red !important;
+    font-family: $poppins !important;
+    font-size: 14px !important;
+    opacity: 0;
+}
+
+.confirm-password-error {
+    opacity: 1;
+}

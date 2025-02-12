@@ -28,6 +28,7 @@
                 <input [ngClass]="{'input-error': errors['confirm_password']|| errors['wrong_confirm_password']}" [(ngModel)]="user.confirm_password" [type]="confirmedPasswordVisisble ? 'text' : 'password'" placeholder="●●●●●●●●" class="input" >
                 <img (click)="toggleConfirmedPasswordVisibiliy()" class="eye-img"
                 [src]="confirmedPasswordVisisble ? '/assets/icons/eye-on.svg' : '/assets/icons/eye-off.svg'" alt="">
+                <p class="wrong-confirm-password" [ngClass]="{'confirm-password-error': errors['wrong_confirm_password']}"> Passwörter stimmen nicht überein</p>
             </div>
         </div>
         <div class="sign-up-container">
