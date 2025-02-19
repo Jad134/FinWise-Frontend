@@ -40,4 +40,14 @@
     width: 100%;
     bottom: 0px;
     z-index: 44;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+
+
+    >img{
+        height: 36px;
+        width: 36px;
+    }
 }
