@@ -1,13 +1,11 @@
 <section>
-    <section>
-        <div class="main-background">
-            <div class="main-container">
-                <ng-content select="[slot='green-content']"></ng-content>
-            </div>
-            <div class="white-main-page">
-                <ng-content select="[slot='white-content']"></ng-content>
-            </div>
-    
+    <div class="main-background">
+        <div class="main-container">
+            <ng-content select="[slot='green-content']"></ng-content>
         </div>
-    </section>
-</section> 
+        <div class="white-main-page">
+            <ng-content select="[slot='white-content']"></ng-content>
+        </div>
+        <div class="footer-nav-bar"></div>
+    </div>
+</section>

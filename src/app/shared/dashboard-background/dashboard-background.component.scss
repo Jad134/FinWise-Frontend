@@ -30,3 +30,14 @@
     border-top-left-radius: 100px;
     border-top-right-radius: 100px;
 } 
+
+.footer-nav-bar{
+    background-color: $light-green;
+    height: 100px;
+    position: absolute;
+    border-top-left-radius: 83px;
+    border-top-right-radius: 83px;
+    width: 100%;
+    bottom: 0px;
+    z-index: 44;
+}
