@@ -1,3 +1,5 @@
+@import "../../../../styles.scss";
+
 section {
     width: 100vw;
 }
@@ -10,6 +12,18 @@ section {
     padding-inline: 24px;
 }
 
-.bell-icon {
+.headline {
+    font-family: $poppins;
+    color: $fence-green;
+    display: flex;
+    flex-direction: column;
 
+    h3 {
+        line-height: 1;
+    }
+
+    >p {
+        font-size: 14px;
+        line-height: 1.2;
+    }
 }
