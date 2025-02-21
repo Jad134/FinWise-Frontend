@@ -27,3 +27,26 @@ section {
         line-height: 1.2;
     }
 }
+
+.total-header{
+    display: flex;
+    gap: 4px;
+}
+
+.totals{
+    display: flex;
+    gap: 24px;
+}
+
+.seperator{
+    height: 40px;
+    width: 2px;
+    background-color: white;
+}
+
+.amount-number{
+    color: white;
+    font-family: $poppins;
+    font-size: 24px;
+    font-weight: bold;
+}

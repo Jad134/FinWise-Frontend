@@ -8,5 +8,23 @@ import { Component } from '@angular/core';
   styleUrl: './home-green.component.scss'
 })
 export class HomeGreenComponent {
+  
+  constructor() {
+    this.setGreeting()
+  }
+
+  greeting: string = "";
+
+  setGreeting() {
+    const hour = new Date().getHours();
+
+    if (hour < 12) {
+      this.greeting = 'Morning';
+    } else if (hour < 18) {
+      this.greeting = 'Afternoon';
+    } else {
+      this.greeting = 'Evening';
+    }
+  }
 
 }
