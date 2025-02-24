@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { DashboardBackgroundComponent } from "../shared/dashboard-background/dashboard-background.component";
 
 @Component({
@@ -10,5 +10,15 @@ import { DashboardBackgroundComponent } from "../shared/dashboard-background/das
     imports: [RouterModule, DashboardBackgroundComponent]
 })
 export class MainContentComponent {
+constructor(private router: Router){   
+    this.checkIfUserIsLoggedIn()
+}
 
+checkIfUserIsLoggedIn(){
+    if (sessionStorage['token']){
+    }
+    else{
+        this.router.navigate(['']);
+    }
+}
 }

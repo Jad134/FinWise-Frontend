@@ -35,10 +35,13 @@ export class LoginComponent {
 
   login() {
     this.http.post(this.apiService.LOGIN_URL, this.user).subscribe({
-      next: (response) => {
+      next: (response:any) => {
         console.log('✅ Login erfolgreich:', response);
         alert('Login erfolgreich!');
-        this.router.navigate(['/dashboard']);
+        sessionStorage.setItem('token', response.token);
+        console.log(sessionStorage['token']);
+        
+        this.router.navigate(['/dashboard/home']);
       },
       error: ({ error }) => {
         console.error('❌ LogInfehler:', error);
