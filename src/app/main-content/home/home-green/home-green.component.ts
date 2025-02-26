@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import {FinanceService} from '../../../services/shared-functions.service'
 
 @Component({
   selector: 'app-home-green',
@@ -11,10 +12,13 @@ export class HomeGreenComponent {
   
   constructor() {
     this.setGreeting()
+    this.getTotalBalance()
   }
 
+  sharedFunctionService = inject(FinanceService)
+
   greeting: string = "";
-  totalBalance:number | undefined;
+  totalBalance:number | undefined ;
 
   setGreeting() {
     const hour = new Date().getHours();
@@ -26,6 +30,12 @@ export class HomeGreenComponent {
     } else {
       this.greeting = 'Evening';
     }
+  }
+
+  getTotalBalance(){
+    this.sharedFunctionService.getTotalBalance().subscribe(balance => {
+      this.totalBalance = balance;
+    });
   }
 
 }
