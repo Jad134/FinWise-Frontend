@@ -14,6 +14,7 @@ export class HomeGreenComponent {
   }
 
   greeting: string = "";
+  totalBalance:number | undefined;
 
   setGreeting() {
     const hour = new Date().getHours();
