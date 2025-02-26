@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { ApiUrlsService } from './api-urls.service';
 
@@ -13,10 +13,16 @@ export class FinanceService {
   apiService = inject(ApiUrlsService)
 
   getTotalBalance(): Observable<number> {
-    return this.http.get<{ total_balance: number }>(this.apiService.TOTAL_BALANCE_URL)
-      .pipe(
-        map(response => response.total_balance) // Extrahiert nur den Zahlenwert
-      );
+    const headers = new HttpHeaders({
+      'Authorization': `Token ${sessionStorage.getItem('token')}`  // Token aus localStorage holen
+    });
+  
+    return this.http.get<{ total_balance: number }>(
+      this.apiService.TOTAL_BALANCE_URL,
+      { headers }
+    ).pipe(
+      map(response => response.total_balance)
+    );
   }
   
   
