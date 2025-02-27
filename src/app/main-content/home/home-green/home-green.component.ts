@@ -13,12 +13,14 @@ export class HomeGreenComponent {
   constructor() {
     this.setGreeting()
     this.getTotalBalance()
+    this.getTotalExpenses()
   }
 
   sharedFunctionService = inject(FinanceService)
 
   greeting: string = "";
   totalBalance:number | undefined ;
+  totalExpenses:number | undefined;
 
   setGreeting() {
     const hour = new Date().getHours();
@@ -35,6 +37,14 @@ export class HomeGreenComponent {
   getTotalBalance(){
     this.sharedFunctionService.getTotalBalance().subscribe(balance => {
       this.totalBalance = balance;
+    });
+  }
+
+  getTotalExpenses(){
+    this.sharedFunctionService.getTotalExpenses().subscribe(expense => {
+      this.totalExpenses = expense;
+      console.log(this.totalExpenses);
+      
     });
   }
 

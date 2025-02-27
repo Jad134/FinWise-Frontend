@@ -24,6 +24,18 @@ export class FinanceService {
       map(response => response.total_balance)
     );
   }
+
+  getTotalExpenses(): Observable<number> {
+    const headers = new HttpHeaders({
+      'Authorization': `Token ${sessionStorage.getItem('token')}`  // Token aus localStorage holen
+    });
+    return this.http.get<{ total_expenses: number }>(
+      this.apiService.TOTAL_BALANCE_URL,
+      { headers }
+    ).pipe(
+      map(response => response.total_expenses)
+    ); 
+  }
   
   
 }
