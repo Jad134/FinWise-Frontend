@@ -12,10 +12,15 @@ export class FinanceService {
 
   apiService = inject(ApiUrlsService)
 
-  getTotalBalance(): Observable<number> {
-    const headers = new HttpHeaders({
-      'Authorization': `Token ${sessionStorage.getItem('token')}`  // Token aus localStorage holen
+
+  getAuthToken(){
+   return new HttpHeaders({
+      'Authorization': `Token ${sessionStorage.getItem('token')}` 
     });
+  }
+
+  getTotalBalance(): Observable<number> {
+    const headers = this.getAuthToken()
   
     return this.http.get<{ total_balance: number }>(
       this.apiService.TOTAL_BALANCE_URL,
@@ -26,9 +31,8 @@ export class FinanceService {
   }
 
   getTotalExpenses(): Observable<number> {
-    const headers = new HttpHeaders({
-      'Authorization': `Token ${sessionStorage.getItem('token')}`  // Token aus localStorage holen
-    });
+    const headers = this.getAuthToken()
+    
     return this.http.get<{ total_expenses: number }>(
       this.apiService.TOTAL_BALANCE_URL,
       { headers }
