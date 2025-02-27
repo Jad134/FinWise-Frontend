@@ -32,12 +32,23 @@ export class FinanceService {
 
   getTotalExpenses(): Observable<number> {
     const headers = this.getAuthToken()
-    
+
     return this.http.get<{ total_expenses: number }>(
       this.apiService.TOTAL_BALANCE_URL,
       { headers }
     ).pipe(
       map(response => response.total_expenses)
+    ); 
+  }
+
+  getTargetSavings(){
+    const headers = this.getAuthToken()
+
+    return this.http.get<{ target_savings: number }>(
+      this.apiService.TOTAL_BALANCE_URL,
+      { headers }
+    ).pipe(
+      map(response => response.target_savings)
     ); 
   }
   

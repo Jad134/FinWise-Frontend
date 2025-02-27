@@ -14,6 +14,7 @@ export class HomeGreenComponent {
     this.setGreeting()
     this.getTotalBalance()
     this.getTotalExpenses()
+    this.getTargetSavings()
   }
 
   sharedFunctionService = inject(FinanceService)
@@ -21,6 +22,7 @@ export class HomeGreenComponent {
   greeting: string = "";
   totalBalance:number | undefined ;
   totalExpenses:number | undefined;
+  targetSavings:number | undefined;
 
   setGreeting() {
     const hour = new Date().getHours();
@@ -45,6 +47,13 @@ export class HomeGreenComponent {
       this.totalExpenses = expense;
       console.log(this.totalExpenses);
       
+    });
+  }
+
+  getTargetSavings(){
+    this.sharedFunctionService.getTargetSavings().subscribe(target => {
+      this.targetSavings = target;
+      console.log(this.targetSavings);
     });
   }
 
