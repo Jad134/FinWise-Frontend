@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
-import {FinanceService} from '../../../services/shared-functions.service'
+import { FinanceService } from '../../../services/shared-functions.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-home-green',
@@ -9,7 +10,7 @@ import {FinanceService} from '../../../services/shared-functions.service'
   styleUrl: './home-green.component.scss'
 })
 export class HomeGreenComponent {
-  
+
   constructor() {
     this.setGreeting()
     this.getTotalBalance()
@@ -20,9 +21,15 @@ export class HomeGreenComponent {
   sharedFunctionService = inject(FinanceService)
 
   greeting: string = "";
-  totalBalance:number | undefined ;
-  totalExpenses:number | undefined;
-  targetSavings:number | undefined;
+  totalBalance: number = 0;
+  totalExpenses: number | undefined;
+  targetSavings: number = 1;
+
+  private totalBalance$ = new BehaviorSubject<number | undefined>(undefined);
+  private targetSavings$ = new BehaviorSubject<number | undefined>(undefined);
+
+  progressPercentage: number = 100;
+
 
   setGreeting() {
     const hour = new Date().getHours();
@@ -36,25 +43,42 @@ export class HomeGreenComponent {
     }
   }
 
-  getTotalBalance(){
+
+  getTotalBalance() {
     this.sharedFunctionService.getTotalBalance().subscribe(balance => {
       this.totalBalance = balance;
+      this.totalBalance$.next(balance); // Wert setzen
+      this.calculateProgressPercentage();
     });
   }
 
-  getTotalExpenses(){
+  getTotalExpenses() {
     this.sharedFunctionService.getTotalExpenses().subscribe(expense => {
       this.totalExpenses = expense;
       console.log(this.totalExpenses);
-      
+
     });
   }
 
-  getTargetSavings(){
+  getTargetSavings() {
     this.sharedFunctionService.getTargetSavings().subscribe(target => {
       this.targetSavings = target;
       console.log(this.targetSavings);
+      this.targetSavings$.next(target); // Wert setzen
+      this.calculateProgressPercentage();
     });
   }
 
+  calculateProgressPercentage() {
+    const balance = this.totalBalance$.getValue();
+    const target = this.targetSavings$.getValue();
+
+    if (balance !== undefined && target !== undefined && target !== 0) {
+      const progress = (balance / target) * 100;
+      this.progressPercentage = Math.min( progress, 100);
+      console.log("📊 Neuer erreichterr Prozentwert:", this.progressPercentage);
+    }
+  }
 }
+
+
