@@ -73,6 +73,7 @@ section {
     background-color: #f0f0f0;
     border-radius: 50px;
     overflow: hidden;
+    position: relative;
 }
 
 .progress-bar {
@@ -87,10 +88,24 @@ section {
     justify-content: center;
     align-items: center;
     color: white;
+    z-index: 1;
+    position: relative;
+    font-family: $poppins;
+    font-size: 12px;
 }
 
 .progress-bar-container {
     display: flex;
     justify-content: center;
-    padding-top: 24px;
+    padding-top: 16px;
+}
+
+.target{
+    position: absolute;
+    right: 16px;
+    top: 1px;
+    font-family: $poppins;
+    font-size: 14px;
+    font-weight: 600;
+    color: $dark-green;
 }
