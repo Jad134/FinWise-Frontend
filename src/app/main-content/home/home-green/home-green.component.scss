@@ -109,3 +109,13 @@ section {
     font-weight: 600;
     color: $dark-green;
 }
+
+.motivation-percent-text{
+display: flex;
+justify-content: center;
+align-items: center;
+padding-top: 8px;
+font-family: $poppins;
+font-size: 14px;
+gap: 8px;
+}
