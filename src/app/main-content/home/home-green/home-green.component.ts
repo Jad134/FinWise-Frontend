@@ -24,6 +24,7 @@ export class HomeGreenComponent {
   totalBalance: number = 0;
   totalExpenses: number | undefined;
   targetSavings: number = 1;
+  targetText: string = 'Looks goodsnsns'
 
   private totalBalance$ = new BehaviorSubject<number | undefined>(undefined);
   private targetSavings$ = new BehaviorSubject<number | undefined>(undefined);
@@ -69,14 +70,37 @@ export class HomeGreenComponent {
     });
   }
 
+  
   calculateProgressPercentage() {
     const balance = this.totalBalance$.getValue();
     const target = this.targetSavings$.getValue();
 
     if (balance !== undefined && target !== undefined && target !== 0) {
       const progress = (balance / target) * 100;
-      this.progressPercentage = Math.min( progress, 100);
+      this.progressPercentage = Math.min(progress, 100);
       console.log("📊 Neuer erreichterr Prozentwert:", this.progressPercentage);
+      this.changeProgressText()
+    }
+  }
+
+
+  changeProgressText() {
+    switch (true) {
+      case this.progressPercentage <= 29:
+        this.targetText = 'Let\'s Go.';
+        break;
+      case this.progressPercentage <= 49:
+        this.targetText = 'Looks Good.';
+        break;
+      case this.progressPercentage <= 69:
+        this.targetText = 'It\'s Halftime.';
+        break;
+      case this.progressPercentage <= 89:
+        this.targetText = 'Almost There!';
+        break;
+      default:
+        this.targetText = 'So Close!';
+        break;
     }
   }
 }
