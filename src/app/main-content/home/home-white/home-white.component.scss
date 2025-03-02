@@ -1,0 +1,19 @@
+@import "../../../../styles.scss";
+
+section {
+    width: 100vw;
+}
+
+
+.main-div{
+    display: flex;
+    justify-content: center;
+}
+
+.green-overview{
+    height: 150px;
+    width: 80%;
+    background-color: $main-green;
+    margin-top: 32px;
+    border-radius: 32px;
+}
