@@ -11,9 +11,23 @@ section {
 }
 
 .green-overview{
+    display: flex;
+    align-items: center;
     height: 150px;
     width: 80%;
     background-color: $main-green;
     margin-top: 32px;
     border-radius: 32px;
+}
+
+.seperator {
+    height: 100px;
+    width: 2px;
+    background-color: white;
+}
+
+.seperator2 {
+    height: 2px;
+    width: 140px;
+    background-color: white;
 }
