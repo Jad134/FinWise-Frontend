@@ -5,7 +5,8 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './home-white.component.html',
-  styleUrl: './home-white.component.scss'
+  styleUrls: ['./home-white.component.scss', './process-circle.scss'] 
+
 })
 export class HomeWhiteComponent {
 
