@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 })
 export class HomeWhiteComponent {
 
-  progressPercentage: number = 50; // Beispielwert
+  progressPercentage: number = 50; 
   circumference: number = 2 * Math.PI * 45; 
 
   get progressOffset(): number {
