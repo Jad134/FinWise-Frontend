@@ -4,21 +4,35 @@
             <div class="left-green-overview-site">
                 <div class="radial-progress-bar">
                     <svg viewBox="0 0 100 100">
-                      <circle class="background" cx="50" cy="50" r="45"></circle>
-                      <circle class="progress" cx="50" cy="50" r="45" 
-                              [style.strokeDashoffset]="progressOffset"></circle>
-                      <text x="50" y="50" class="percentage" text-anchor="middle" dy="0.3em">
-                      </text>
+                        <circle class="background" cx="50" cy="50" r="45"></circle>
+                        <circle class="progress" cx="50" cy="50" r="45" [style.strokeDashoffset]="progressOffset">
+                        </circle>
+                        <text x="50" y="50" class="percentage" text-anchor="middle" dy="0.3em">
+                        </text>
                     </svg>
                     <img src="/assets/icons/caricon.svg" alt="Progress Icon" class="progress-icon">
-                  </div>
+                </div>
                 <p>Savings <br> On Goals</p>
             </div>
             <div class="seperator"></div>
-            <div>
-                <p>Revenue last week</p>
+            <div class="right-green-oview-site">
+                <div class="revenue-container">
+                    <img class="green-overview-icons" src="/assets/icons/dollar-icon.svg" alt="">
+                    <div class="right-side-text-container">
+                        <p>Revenue Last Week</p>
+                        <p class="revenue-amount">$400000</p>
+                    </div>
+                </div>
                 <div class="seperator2"></div>
-                <p>Food Last Week</p>
+                <div class="food-container">
+                    <img class="green-overview-icons" src="/assets/icons/food-icon.svg" alt="">
+                    <div class="right-side-text-container">
+                        <p>Food Last Week</p>
+                        <p class="food-last-week-amount">-$100</p>
+                    </div>
+
+                </div>
+              
             </div>
         </div>
     </div>
