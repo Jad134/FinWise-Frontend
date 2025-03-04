@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FinanceService } from '../../../services/shared-functions.service';
 
 @Component({
   selector: 'app-home-white',
@@ -9,11 +10,23 @@ import { Component } from '@angular/core';
 
 })
 export class HomeWhiteComponent {
+  constructor() {
+    this.getFilteredExpenses('monthly'); // Standardmäßig Monatsausgaben laden
+  }
 
+ sharedFunctionService = inject(FinanceService)
+  expensesList: any[] = [];  
   progressPercentage: number = 50; 
   circumference: number = 2 * Math.PI * 45; 
 
   get progressOffset(): number {
     return this.circumference * (1 - this.progressPercentage / 100);
+  }
+
+  getFilteredExpenses(filter: string) {
+    this.sharedFunctionService.getFilteredExpenses(filter).subscribe(expenses => {
+      this.expensesList = expenses;
+      console.log(`Filtered Expenses (${filter}):`, expenses);
+    });
   }
 }
