@@ -100,8 +100,35 @@ section {
   justify-content: center;
   align-items: center;
   border-radius: 24px;
-  gap: 62px;
+  gap: 12px;
   background-color: $light-green;
   width: 90%;
   height: 60px;
+}
+
+.daily-container{
+  height: 80%;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 17px;
+}
+
+.weekly-container{
+  height: 80%;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 17px;
+}
+
+.monthly-container{
+  height: 80%;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 17px;
 }
