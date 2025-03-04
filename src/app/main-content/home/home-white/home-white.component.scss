@@ -9,6 +9,9 @@ section {
 .main-div {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
 .green-overview {
@@ -90,4 +93,15 @@ section {
 .food-last-week-amount{
   color: $ocean-blue;
   font-weight: bold;
+}
+
+.period-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  gap: 62px;
+  background-color: $light-green;
+  width: 90%;
+  height: 60px;
 }
