@@ -78,6 +78,7 @@ export class HomeGreenComponent {
     if (balance !== undefined && target !== undefined && target !== 0) {
       const progress = (balance / target) * 100;
       this.progressPercentage = Math.min(progress, 100);
+       this.progressPercentage = Math.round(this.progressPercentage) 
       console.log("📊 Neuer erreichterr Prozentwert:", this.progressPercentage);
       this.changeProgressText()
     }
