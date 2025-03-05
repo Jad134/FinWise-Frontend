@@ -34,9 +34,15 @@
             </div>
         </div>
         <div class="period-container">
-            <div class="daily-container" (click)="getFilteredExpenses('daily')"><p>Daily</p></div>
-            <div class="weekly-container" (click)="getFilteredExpenses('weekly')"><p>Weekly</p></div>
-            <div class="monthly-container" (click)="getFilteredExpenses('monthly')"><p>Monthly</p></div>
-          </div>
+            <div [ngClass]="{'active': selectedFilter === 'daily'}" class="daily-container" (click)="getFilteredExpenses('daily')">
+                <p>Daily</p>
+            </div>
+            <div [ngClass]="{'active': selectedFilter === 'weekly'}" class="daily-container" class="weekly-container" (click)="getFilteredExpenses('weekly')">
+                <p>Weekly</p>
+            </div>
+            <div [ngClass]="{'active': selectedFilter === 'monthly'}" class="daily-container" class="monthly-container" (click)="getFilteredExpenses('monthly')">
+                <p>Monthly</p>
+            </div>
+        </div>
     </div>
 </section>

@@ -48,7 +48,7 @@ export class HomeGreenComponent {
   getTotalBalance() {
     this.sharedFunctionService.getTotalBalance().subscribe(balance => {
       this.totalBalance = balance;
-      this.totalBalance$.next(balance); // Wert setzen
+      this.totalBalance$.next(balance); 
       this.calculateProgressPercentage();
     });
   }
@@ -65,7 +65,7 @@ export class HomeGreenComponent {
     this.sharedFunctionService.getTargetSavings().subscribe(target => {
       this.targetSavings = target;
       console.log(this.targetSavings);
-      this.targetSavings$.next(target); // Wert setzen
+      this.targetSavings$.next(target); 
       this.calculateProgressPercentage();
     });
   }

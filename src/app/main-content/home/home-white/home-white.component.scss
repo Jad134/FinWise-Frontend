@@ -113,6 +113,7 @@ section {
   justify-content: center;
   align-items: center;
   border-radius: 17px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .weekly-container{
@@ -122,6 +123,7 @@ section {
   justify-content: center;
   align-items: center;
   border-radius: 17px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .monthly-container{
@@ -131,4 +133,9 @@ section {
   justify-content: center;
   align-items: center;
   border-radius: 17px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.active{
+  background-color: $main-green;
 }
