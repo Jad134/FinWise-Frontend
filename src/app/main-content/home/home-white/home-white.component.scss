@@ -139,3 +139,37 @@ section {
 .active{
   background-color: $main-green;
 }
+
+.period-list{
+width: 90%;
+}
+
+.overview-information-container{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+}
+
+.overview-informations{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.overview-time-detail{
+  font-size: 12px;
+  color: $ocean-blue;
+  font-weight: bolder;
+}
+
+.overview-period-month{
+  font-size: 13px;
+}
+
+.overview-seperator{
+width: 2px;
+height: 40px;
+background-color: $main-green;
+}
+
