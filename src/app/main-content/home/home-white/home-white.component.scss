@@ -47,7 +47,7 @@ section {
   background-color: white;
 }
 
-.right-green-oview-site{
+.right-green-oview-site {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,46 +56,46 @@ section {
   gap: 8px;
 }
 
-.green-overview-icons{
+.green-overview-icons {
   width: 32px;
   height: 32px;
 }
 
-.revenue-container{
+.revenue-container {
   display: flex;
   align-items: center;
   width: 100%;
   gap: 8px;
 }
 
-.food-container{
+.food-container {
   display: flex;
   align-items: center;
   width: 100%;
   gap: 4px;
 }
 
-.right-side-text-container{
+.right-side-text-container {
   display: flex;
   flex-direction: column;
   align-items: start;
 
-  >p{
+  >p {
     font-size: 15px;
   }
 }
 
-.revenue-amount{
+.revenue-amount {
   font-weight: bold;
   font-size: 16px !important;
 }
 
-.food-last-week-amount{
+.food-last-week-amount {
   color: $ocean-blue;
   font-weight: bold;
 }
 
-.period-container{
+.period-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,7 +106,7 @@ section {
   height: 60px;
 }
 
-.daily-container{
+.daily-container {
   height: 80%;
   width: 100px;
   display: flex;
@@ -116,7 +116,7 @@ section {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.weekly-container{
+.weekly-container {
   height: 80%;
   width: 100px;
   display: flex;
@@ -126,7 +126,7 @@ section {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.monthly-container{
+.monthly-container {
   height: 80%;
   width: 100px;
   display: flex;
@@ -136,40 +136,43 @@ section {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.active{
+.active {
   background-color: $main-green;
 }
 
-.period-list{
-width: 90%;
+.period-list {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.overview-information-container{
+.overview-information-container {
   display: flex;
   align-items: center;
   gap: 16px;
 
+
 }
 
-.overview-informations{
+.overview-informations {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.overview-time-detail{
+.overview-time-detail {
   font-size: 12px;
   color: $ocean-blue;
   font-weight: bolder;
 }
 
-.overview-period-month{
+.overview-period-month {
   font-size: 13px;
 }
 
-.overview-seperator{
-width: 2px;
-height: 40px;
-background-color: $main-green;
+.overview-seperator {
+  width: 2px;
+  height: 40px;
+  background-color: $main-green;
 }
-

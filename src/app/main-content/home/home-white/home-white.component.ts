@@ -14,7 +14,7 @@ export class HomeWhiteComponent {
 
 
   constructor() {
-    this.getFilteredExpenses('weekly'); 
+    this.getFilteredExpenses('food'); 
   }
 
 
@@ -22,7 +22,7 @@ export class HomeWhiteComponent {
   expensesList: any[] = [];
   progressPercentage: number = 50;
   circumference: number = 2 * Math.PI * 45;
-  selectedFilter: string = 'monthly';
+  selectedFilter: string = 'food';
 
   get progressOffset(): number {
     return this.circumference * (1 - this.progressPercentage / 100);

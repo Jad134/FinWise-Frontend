@@ -34,20 +34,33 @@
             </div>
         </div>
         <div class="period-container">
-            <div [ngClass]="{'active': selectedFilter === 'daily'}" class="daily-container"
-                (click)="getFilteredExpenses('daily')">
-                <p>Daily</p>
+            <div [ngClass]="{'active': selectedFilter === 'housing'}" class="daily-container"
+                (click)="getFilteredExpenses('housing')">
+                <p>Housing</p>
             </div>
-            <div [ngClass]="{'active': selectedFilter === 'weekly'}" class="daily-container" class="weekly-container"
-                (click)="getFilteredExpenses('weekly')">
-                <p>Weekly</p>
+            <div [ngClass]="{'active': selectedFilter === 'food'}" class="daily-container" class="weekly-container"
+                (click)="getFilteredExpenses('food')">
+                <p>Food</p>
             </div>
-            <div [ngClass]="{'active': selectedFilter === 'monthly'}" class="daily-container" class="monthly-container"
-                (click)="getFilteredExpenses('monthly')">
-                <p>Monthly</p>
+            <div [ngClass]="{'active': selectedFilter === 'transportation'}" class="daily-container" class="monthly-container"
+                (click)="getFilteredExpenses('transportation')">
+                <p>Transport</p>
             </div>
         </div>
         <div class="period-list">
+            <div class="overview-information-container">
+                <div><img class="overview-icon" src="/assets/icons/blue-dollar-icon.svg" alt=""></div>
+                <div class="overview-informations">
+                    <div>
+                        <p>Salary</p>
+                        <p class="overview-time-detail">18:27 - April 30</p>
+                    </div>
+                    <div class="overview-seperator"></div>
+                    <div class="overview-period-month">Monthly</div>
+                    <div  class="overview-seperator"></div>
+                    <div>$4.000,00</div>
+                </div>
+            </div>
             <div class="overview-information-container">
                 <div><img class="overview-icon" src="/assets/icons/blue-dollar-icon.svg" alt=""></div>
                 <div class="overview-informations">
