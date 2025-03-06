@@ -14,7 +14,7 @@ export class HomeWhiteComponent {
 
 
   constructor() {
-    this.getFilteredExpenses('food'); 
+    this.getFilteredExpenses('food');
   }
 
 
@@ -30,10 +30,15 @@ export class HomeWhiteComponent {
 
 
   getFilteredExpenses(filter: string) {
-    this.selectedFilter = filter; 
+    this.selectedFilter = filter;
     this.sharedFunctionService.getFilteredExpenses(filter).subscribe(expenses => {
       this.expensesList = expenses;
       console.log(`Filtered Expenses (${filter}):`, expenses);
     });
+  }
+
+  titleCaseWord(word: string) {
+    if (!word) return word;
+    return word[0].toUpperCase() + word.substr(1).toLowerCase();
   }
 }
