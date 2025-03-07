@@ -145,6 +145,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  align-items: center;
 }
 
 .overview-information-container {
@@ -167,8 +168,12 @@ section {
   font-weight: bolder;
 }
 
-.overview-period-month {
+.overview-period-description {
   font-size: 13px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  
 }
 
 .overview-seperator {
