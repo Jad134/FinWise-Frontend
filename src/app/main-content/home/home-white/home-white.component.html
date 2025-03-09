@@ -42,8 +42,8 @@
                 (click)="getFilteredExpenses('food')">
                 <p>Food</p>
             </div>
-            <div [ngClass]="{'active': selectedFilter === 'transportation'}" class="daily-container"
-                class="monthly-container" (click)="getFilteredExpenses('transportation')">
+            <div [ngClass]="{'active': selectedFilter === 'transport'}" class="daily-container"
+                class="monthly-container" (click)="getFilteredExpenses('transport')">
                 <p>Transport</p>
             </div>
         </div>
@@ -56,7 +56,7 @@
                         <p class="overview-time-detail">{{expense.date}}</p>
                     </div>
                     <div class="overview-seperator"></div>
-                    <div class="overview-period-description">{{expense.description}}</div>
+                    <div class="overview-period-description">{{ expense.description.length > 9 ? (expense.description | slice:0:9) + '...' : expense.description }}</div>
                     <div class="overview-seperator"></div>
                     <div class="expense-amount">{{expense.amount}}</div>
                 </div>
