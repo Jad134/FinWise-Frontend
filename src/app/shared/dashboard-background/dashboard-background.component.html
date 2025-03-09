@@ -7,10 +7,10 @@
             <ng-content select="[slot='white-content']"></ng-content>
         </div>
         <div class="footer-nav-bar">
-            <div class="footer-icon-container">
+            <div routerLink="/dashboard/home" [ngClass]="{'active-tab': currentRoute === '/dashboard/home'}" class="footer-icon-container">
                 <img class="footer-icons" src="/assets/icons/home.svg" alt="">
             </div>
-            <div class="footer-icon-container">
+            <div routerLink="/dashboard/analysis" [ngClass]="{'active-tab': currentRoute === '/dashboard/analysis'}" class="footer-icon-container">
                 <img class="footer-icons" src="/assets/icons/lupe.svg" alt="">
             </div>
             <div class="footer-icon-container">
