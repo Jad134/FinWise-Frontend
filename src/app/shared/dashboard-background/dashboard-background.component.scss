@@ -1,6 +1,6 @@
 @import "../../../styles.scss";
 
-.main-background{
+.main-background {
     height: 100vh;
     width: 100vw;
     background-color: $main-green;
@@ -8,30 +8,30 @@
     flex-direction: column;
 }
 
-.main-container{
+.main-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 40vh;
-} 
+}
 
-.headline{
+.headline {
     font-size: 30px;
     font-family: $poppins;
     color: $fence-green;
     font-weight: 600;
 }
 
-.white-main-page{
+.white-main-page {
     height: 100%;
     background: white;
     z-index: 3;
     display: flex;
     border-top-left-radius: 100px;
     border-top-right-radius: 100px;
-} 
+}
 
-.footer-nav-bar{
+.footer-nav-bar {
     background-color: $light-green;
     height: 100px;
     position: absolute;
@@ -43,10 +43,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 36px;
+    gap: 16px;
 
 
-    >img{
+}
+
+.footer-icon-container {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    border-radius: 20px;
+
+    >img {
         height: 36px;
         width: 36px;
     }
