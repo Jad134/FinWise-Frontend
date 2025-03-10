@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FinanceService } from '../../../services/shared-functions.service';
 import { BehaviorSubject } from 'rxjs';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-analysis-green',
@@ -11,13 +12,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AnalysisGreenComponent {
 
-  constructor() {
-    this.setGreeting()
+  constructor(private router: Router) {
     this.getTotalBalance()
     this.getTotalExpenses()
     this.getTargetSavings()
   }
 
+  currentRoute: string = ''
   sharedFunctionService = inject(FinanceService)
 
   greeting: string = "";
@@ -28,30 +29,17 @@ export class AnalysisGreenComponent {
 
   private totalBalance$ = new BehaviorSubject<number | undefined>(undefined);
   private targetSavings$ = new BehaviorSubject<number | undefined>(undefined);
-
   progressPercentage: number = 100;
-
-
-  setGreeting() {
-    const hour = new Date().getHours();
-
-    if (hour < 12) {
-      this.greeting = 'Morning';
-    } else if (hour < 18) {
-      this.greeting = 'Afternoon';
-    } else {
-      this.greeting = 'Evening';
-    }
-  }
 
 
   getTotalBalance() {
     this.sharedFunctionService.getTotalBalance().subscribe(balance => {
       this.totalBalance = balance;
-      this.totalBalance$.next(balance); 
+      this.totalBalance$.next(balance);
       this.calculateProgressPercentage();
     });
   }
+
 
   getTotalExpenses() {
     this.sharedFunctionService.getTotalExpenses().subscribe(expense => {
@@ -61,16 +49,17 @@ export class AnalysisGreenComponent {
     });
   }
 
+
   getTargetSavings() {
     this.sharedFunctionService.getTargetSavings().subscribe(target => {
       this.targetSavings = target;
       console.log(this.targetSavings);
-      this.targetSavings$.next(target); 
+      this.targetSavings$.next(target);
       this.calculateProgressPercentage();
     });
   }
 
-  
+
   calculateProgressPercentage() {
     const balance = this.totalBalance$.getValue();
     const target = this.targetSavings$.getValue();
@@ -78,7 +67,7 @@ export class AnalysisGreenComponent {
     if (balance !== undefined && target !== undefined && target !== 0) {
       const progress = (balance / target) * 100;
       this.progressPercentage = Math.min(progress, 100);
-       this.progressPercentage = Math.round(this.progressPercentage) 
+      this.progressPercentage = Math.round(this.progressPercentage)
       console.log("📊 Neuer erreichterr Prozentwert:", this.progressPercentage);
       this.changeProgressText()
     }
@@ -103,6 +92,11 @@ export class AnalysisGreenComponent {
         this.targetText = 'So Close!';
         break;
     }
+  }
+
+
+  routeToHome() {
+    this.router.navigate(['dashboard/home'])
   }
 }
 

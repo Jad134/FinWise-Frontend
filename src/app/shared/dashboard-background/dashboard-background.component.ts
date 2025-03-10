@@ -11,12 +11,11 @@ import { CommonModule } from '@angular/common';
 })
 export class DashboardBackgroundComponent {
 
-  currentRoute: string = ''
-
-
   constructor(private router: Router) {
     this.router.events.subscribe(() => {
       this.currentRoute = this.router.url;
     });
   }
+
+  currentRoute: string = ''
 }
