@@ -14,18 +14,8 @@ section {
 
 .headline {
     font-family: $poppins;
-    color: $fence-green;
-    display: flex;
-    flex-direction: column;
-
-    h3 {
-        line-height: 1;
-    }
-
-    >p {
-        font-size: 14px;
-        line-height: 1.2;
-    }
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 .total-header {
@@ -78,7 +68,7 @@ section {
 
 .progress-bar {
     height: 100%;
-    background-color:$fence-green;
+    background-color: $fence-green;
     /* Grüne Farbe für den Fortschritt */
     border-radius: 0px 50px 50px 0px;
     /* Abgerundete Ecken links */
@@ -100,7 +90,7 @@ section {
     padding-top: 16px;
 }
 
-.target{
+.target {
     position: absolute;
     right: 16px;
     top: 1px;
@@ -110,12 +100,17 @@ section {
     color: $dark-green;
 }
 
-.motivation-percent-text{
-display: flex;
-justify-content: center;
-align-items: center;
-padding-top: 8px;
-font-family: $poppins;
-font-size: 14px;
-gap: 8px;
+.motivation-percent-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+    font-family: $poppins;
+    font-size: 14px;
+    gap: 8px;
+}
+
+.arrow-left {
+    width: 40px;
+    height: 40px;
 }
