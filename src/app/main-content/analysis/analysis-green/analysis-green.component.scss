@@ -1,0 +1,121 @@
+@import "../../../../styles.scss";
+
+section {
+    width: 100vw;
+}
+
+.header {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 24px;
+}
+
+.headline {
+    font-family: $poppins;
+    color: $fence-green;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        line-height: 1;
+    }
+
+    >p {
+        font-size: 14px;
+        line-height: 1.2;
+    }
+}
+
+.total-header {
+    display: flex;
+    gap: 4px;
+
+    >p {
+        font-size: 12px;
+    }
+}
+
+.totals {
+    margin-top: 24px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    font-family: $poppins;
+}
+
+.seperator {
+    height: 40px;
+    width: 2px;
+    background-color: white;
+}
+
+.amount-number {
+    color: white;
+    font-family: $poppins;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.expense-number {
+    color: $ocean-blue;
+    font-family: $poppins;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+.progress-bar-outside {
+    width: 70%;
+    height: 24px;
+    background-color: #f0f0f0;
+    border-radius: 50px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color:$fence-green;
+    /* Grüne Farbe für den Fortschritt */
+    border-radius: 0px 50px 50px 0px;
+    /* Abgerundete Ecken links */
+    transition: width 0.5s ease-in-out;
+    /* Sanfte Übergänge */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 1;
+    position: relative;
+    font-family: $poppins;
+    font-size: 12px;
+}
+
+.progress-bar-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 16px;
+}
+
+.target{
+    position: absolute;
+    right: 16px;
+    top: 1px;
+    font-family: $poppins;
+    font-size: 14px;
+    font-weight: 600;
+    color: $dark-green;
+}
+
+.motivation-percent-text{
+display: flex;
+justify-content: center;
+align-items: center;
+padding-top: 8px;
+font-family: $poppins;
+font-size: 14px;
+gap: 8px;
+}
