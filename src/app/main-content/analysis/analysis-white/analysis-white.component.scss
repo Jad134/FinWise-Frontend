@@ -1,0 +1,33 @@
+@import "../../../../styles.scss";
+
+section {
+    width: 100vw;
+    font-family: $poppins;
+}
+
+.main-div {
+    display: flex;
+    justify-content: center;
+}
+
+.period-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-top: 40px;
+    background-color: $light-green;
+    min-width: 80%;
+    height: 80px;
+    border-radius: 24px;
+}
+
+.period {
+    background-color: $main-green;
+    width: 80px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 24px;
+}
