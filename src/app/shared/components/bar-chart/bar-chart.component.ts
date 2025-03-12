@@ -23,7 +23,7 @@ export class BarChartComponent {
         datasets: [
           {
             label: 'Income',
-            data: [1, 5, 10, 15],
+            data: [3000, 1000, 7000, 500, 11000, 2000, 2500],
             backgroundColor: '#1ABC9C',
             borderRadius: 5,
             categoryPercentage: 0.4, 
@@ -31,7 +31,7 @@ export class BarChartComponent {
           },
           {
             label: 'Expenses',
-            data: [1, 5, 10, 15],
+            data: [6000, 4000, 3000, 5000, 9000, 500, 6000],
             backgroundColor: '#007AFF',
             borderRadius: 5,
             categoryPercentage: 0.4, 
@@ -54,7 +54,14 @@ export class BarChartComponent {
             },
             ticks: {
               color: '#90CAF9',
-              callback: (value) => value + 'k',
+              suggestedMin: 1,
+              beginAtZero: false, 
+              max: 15000,
+              stepSize: 5000, // Schritte von 5k
+              callback: (value :number) => {
+                const allowedValues = [1000, 5000, 10000, 15000];
+                return allowedValues.includes(value as number) ? `${value / 1000}k` : ''; 
+              }
             }
           }
         },
@@ -65,3 +72,4 @@ export class BarChartComponent {
     });
   }
 }
+
