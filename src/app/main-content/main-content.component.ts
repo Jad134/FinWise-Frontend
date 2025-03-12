@@ -14,6 +14,9 @@ constructor(private router: Router){
     this.checkIfUserIsLoggedIn()
 }
 
+/**
+ * Checks the token from sessioStorage
+ */
 checkIfUserIsLoggedIn(){
     if (sessionStorage['token']){
     }

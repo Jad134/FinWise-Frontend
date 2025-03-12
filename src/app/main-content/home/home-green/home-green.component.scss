@@ -79,11 +79,8 @@ section {
 .progress-bar {
     height: 100%;
     background-color:$fence-green;
-    /* Grüne Farbe für den Fortschritt */
     border-radius: 0px 50px 50px 0px;
-    /* Abgerundete Ecken links */
     transition: width 0.5s ease-in-out;
-    /* Sanfte Übergänge */
     display: flex;
     justify-content: center;
     align-items: center;

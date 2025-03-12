@@ -25,16 +25,19 @@ export class HomeGreenComponent {
   totalExpenses: number | undefined;
   targetSavings: number = 1;
   targetText: string = 'Looks goodsnsns'
+  progressPercentage: number = 100;
 
   private totalBalance$ = new BehaviorSubject<number | undefined>(undefined);
   private targetSavings$ = new BehaviorSubject<number | undefined>(undefined);
 
-  progressPercentage: number = 100;
 
 
+
+  /**
+   * Sets greetings depending on the time of day for Header
+   */
   setGreeting() {
     const hour = new Date().getHours();
-
     if (hour < 12) {
       this.greeting = 'Morning';
     } else if (hour < 18) {
@@ -45,32 +48,43 @@ export class HomeGreenComponent {
   }
 
 
+  /**
+   * Get the amount of the Total Balance
+   */
   getTotalBalance() {
     this.sharedFunctionService.getTotalBalance().subscribe(balance => {
       this.totalBalance = balance;
-      this.totalBalance$.next(balance); 
+      this.totalBalance$.next(balance);
       this.calculateProgressPercentage();
     });
   }
 
+
+  /**
+   * Get the amount of the Total expense
+   */
   getTotalExpenses() {
     this.sharedFunctionService.getTotalExpenses().subscribe(expense => {
       this.totalExpenses = expense;
-      console.log(this.totalExpenses);
-
     });
   }
 
+
+  /**
+   * Get the amount of the users targent
+   */
   getTargetSavings() {
     this.sharedFunctionService.getTargetSavings().subscribe(target => {
       this.targetSavings = target;
-      console.log(this.targetSavings);
-      this.targetSavings$.next(target); 
+      this.targetSavings$.next(target);
       this.calculateProgressPercentage();
     });
   }
 
-  
+
+/**
+ * Calculate the percantage of the targent progress for the progressbar with live rxjs Subject
+ */
   calculateProgressPercentage() {
     const balance = this.totalBalance$.getValue();
     const target = this.targetSavings$.getValue();
@@ -78,13 +92,15 @@ export class HomeGreenComponent {
     if (balance !== undefined && target !== undefined && target !== 0) {
       const progress = (balance / target) * 100;
       this.progressPercentage = Math.min(progress, 100);
-       this.progressPercentage = Math.round(this.progressPercentage) 
-      console.log("📊 Neuer erreichterr Prozentwert:", this.progressPercentage);
+      this.progressPercentage = Math.round(this.progressPercentage)
       this.changeProgressText()
     }
   }
 
 
+  /**
+   * Changes the target text below the percentage bar depending on the percentage
+   */
   changeProgressText() {
     switch (true) {
       case this.progressPercentage <= 29:
