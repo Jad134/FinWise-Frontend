@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
+import { Chart, ChartOptions, registerables } from 'chart.js';
 
 @Component({
   selector: 'app-bar-chart',
@@ -12,31 +12,56 @@ export class BarChartComponent {
   @ViewChild('barChartCanvas') barChartCanvas!: ElementRef;
 
   constructor() {
-    // Registriere alle notwendigen Komponenten von Chart.js
     Chart.register(...registerables);
   }
 
   ngAfterViewInit() {
     new Chart(this.barChartCanvas.nativeElement, {
-      type: 'bar', // Balkendiagramm
+      type: 'bar',
       data: {
-        labels: ['Januar', 'Februar', 'März', 'April'],
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
         datasets: [
           {
-            label: 'Einnahmen',
-            data: [500, 700, 400, 900], // Beispielwerte
-            backgroundColor: ['#4CAF50', '#FF9800', '#2196F3', '#FF5722'],
+            label: 'Income',
+            data: [1, 5, 10, 15],
+            backgroundColor: '#1ABC9C',
+            borderRadius: 5,
+            categoryPercentage: 0.4, 
+            barPercentage: 0.5, 
+          },
+          {
+            label: 'Expenses',
+            data: [1, 5, 10, 15],
+            backgroundColor: '#007AFF',
+            borderRadius: 5,
+            categoryPercentage: 0.4, 
+            barPercentage: 0.5, 
           }
         ]
       },
       options: {
         responsive: true,
+        scales: {
+          x: {
+            grid: {
+              drawOnChartArea: false,
+            }
+          },
+          y: {
+            grid: {
+              borderDash: [5, 5],
+              color: '#90CAF9',
+            },
+            ticks: {
+              color: '#90CAF9',
+              callback: (value) => value + 'k',
+            }
+          }
+        },
         plugins: {
-          legend: { display: true }
+          legend: { display: false }
         }
-      }
+      } as ChartOptions
     });
   }
 }
-
-
