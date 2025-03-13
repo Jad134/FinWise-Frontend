@@ -1,6 +1,14 @@
+@import '../../../../styles.scss';
+
+
 .chart-container {
-    width: 100%;
-    max-width: 600px;
+
+    width: 357px;
+    height: 247px;
     margin: auto;
-  }
-  
+    background-color: $light-green;
+    border-radius: 15%;
+    padding: 16px
+}
+
+.chart-header {}
