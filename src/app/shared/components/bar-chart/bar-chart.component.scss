@@ -11,4 +11,18 @@
     padding: 16px
 }
 
-.chart-header {}
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 8px;
+
+    >div{
+        display: flex;
+        gap: 4px;
+    }
+
+    >p{
+        font-weight: bolder;
+        font-family: $poppins;
+    }
+}
