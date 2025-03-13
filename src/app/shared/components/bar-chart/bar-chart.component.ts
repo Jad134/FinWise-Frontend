@@ -15,6 +15,8 @@ export class BarChartComponent {
     Chart.register(...registerables);
   }
 
+
+
   ngAfterViewInit() {
     new Chart(this.barChartCanvas.nativeElement, {
       type: 'bar',
@@ -23,7 +25,7 @@ export class BarChartComponent {
         datasets: [
           {
             label: 'Income',
-            data: [3000, 1000, 7000, 500, 17000, 2000, 2500],
+            data: [3000, 1000, 7000, 500, 11000, 2000, 2500],
             backgroundColor: '#1ABC9C',
             borderRadius: 5,
             categoryPercentage: 0.4,
@@ -48,14 +50,19 @@ export class BarChartComponent {
             }
           },
           y: {
+            border: {
+              dash: [5, 5],
+              display: false,
+            },
             grid: {
-              borderDash: [5, 5],
-              color: '#90CAF9',
+              tickBorderDash: [5, 5],
+              color: '#6DB6FE',
+              lineWidth: 1,
             },
             min: 0,
-            max: 16000, 
+            max: 16000,
             ticks: {
-              color: '#90CAF9',
+              color: '#6DB6FE',
               callback: (value: number) => `${value / 1000}k`
             },
             afterBuildTicks: (axis) => {
