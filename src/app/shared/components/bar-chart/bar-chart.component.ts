@@ -26,16 +26,16 @@ export class BarChartComponent {
             data: [3000, 1000, 7000, 500, 11000, 2000, 2500],
             backgroundColor: '#1ABC9C',
             borderRadius: 5,
-            categoryPercentage: 0.4, 
-            barPercentage: 0.5, 
+            categoryPercentage: 0.4,
+            barPercentage: 0.5,
           },
           {
             label: 'Expenses',
             data: [6000, 4000, 3000, 5000, 9000, 500, 6000],
             backgroundColor: '#007AFF',
             borderRadius: 5,
-            categoryPercentage: 0.4, 
-            barPercentage: 0.5, 
+            categoryPercentage: 0.4,
+            barPercentage: 0.5,
           }
         ]
       },
@@ -52,15 +52,17 @@ export class BarChartComponent {
               borderDash: [5, 5],
               color: '#90CAF9',
             },
+            min: 0,  // Start bei 0
+            max: 15000,  // Ende bei 15k
             ticks: {
               color: '#90CAF9',
-              suggestedMin: 1,
-              beginAtZero: false, 
-              max: 15000,
-              stepSize: 5000, // Schritte von 5k
-              callback: (value :number) => {
-                const allowedValues = [1000, 5000, 10000, 15000];
-                return allowedValues.includes(value as number) ? `${value / 1000}k` : ''; 
+              stepSize: 5000,  // Stellen Sie sicher, dass die Achse in 5000er-Schritten ist
+              callback: (value: number) => {
+                // Nur die gewünschten Werte anzeigen
+                if (value === 1000 || value === 5000 || value === 10000 || value === 15000) {
+                  return `${value / 1000}k`;
+                }
+                return ''; // Andere Werte verbergen
               }
             }
           }
@@ -72,4 +74,3 @@ export class BarChartComponent {
     });
   }
 }
-
