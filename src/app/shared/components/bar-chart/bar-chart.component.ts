@@ -47,9 +47,22 @@ export class BarChartComponent {
           x: {
             grid: {
               drawOnChartArea: false,
+              drawTicks:false,
+            },
+            border: {
+              width:1.5,
+              color:'black',
+            },
+            ticks: {
+              font: {
+                size: 13, // Schriftgröße der Wochentage
+                family: 'poppins', // Schriftart
+                weight: 600, // Schriftgewicht
+              },
+              color: 'black', // Schriftfarbe
             }
           },
-          y: {
+          y: {     
             border: {
               dash: [5, 5],
               display: false,
@@ -66,7 +79,6 @@ export class BarChartComponent {
               callback: (value: number) => `${value / 1000}k`
             },
             afterBuildTicks: (axis) => {
-              // Nur die gewünschten Werte behalten
               axis.ticks = [1000, 5000, 10000, 15000].map(v => ({ value: v }));
             }
           }
