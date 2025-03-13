@@ -23,7 +23,7 @@ export class BarChartComponent {
         datasets: [
           {
             label: 'Income',
-            data: [3000, 1000, 7000, 500, 11000, 2000, 2500],
+            data: [3000, 1000, 7000, 500, 17000, 2000, 2500],
             backgroundColor: '#1ABC9C',
             borderRadius: 5,
             categoryPercentage: 0.4,
@@ -52,18 +52,15 @@ export class BarChartComponent {
               borderDash: [5, 5],
               color: '#90CAF9',
             },
-            min: 0,  // Start bei 0
-            max: 15000,  // Ende bei 15k
+            min: 0,
+            max: 16000, 
             ticks: {
               color: '#90CAF9',
-              stepSize: 5000,  // Stellen Sie sicher, dass die Achse in 5000er-Schritten ist
-              callback: (value: number) => {
-                // Nur die gewünschten Werte anzeigen
-                if (value === 1000 || value === 5000 || value === 10000 || value === 15000) {
-                  return `${value / 1000}k`;
-                }
-                return ''; // Andere Werte verbergen
-              }
+              callback: (value: number) => `${value / 1000}k`
+            },
+            afterBuildTicks: (axis) => {
+              // Nur die gewünschten Werte behalten
+              axis.ticks = [1000, 5000, 10000, 15000].map(v => ({ value: v }));
             }
           }
         },
