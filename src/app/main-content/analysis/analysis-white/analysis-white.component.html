@@ -1,10 +1,10 @@
 <section>
     <div class="main-div">
         <div class="period-container">
-            <div class="period">Daily</div>
-            <div class="period">Weekly</div>
-            <div class="period">Monthly</div>
-            <div class="period">Year</div>
+            <div (click)="fetchData('daily')" class="period">Daily</div>
+            <div (click)="fetchData('weekly')" class="period">Weekly</div>
+            <div (click)="fetchData('monthly')" class="period">Monthly</div>
+            <div (click)="fetchData('yearly')" class="period">Year</div>
         </div>
         <div class="bar-chart-section">
             <app-bar-chart></app-bar-chart>
@@ -13,12 +13,12 @@
             <div class="income-container">
                 <img src="/assets/icons/income-green.svg" alt="">
                 <p>Income</p>
-                <p class="income-amount">$3970.00</p>
+                <p class="income-amount">${{ totalIncome.toFixed(2) }}</p>
             </div>
             <div class="expense-container">
                 <img src="/assets/icons/expense-blue.svg" alt="">
                 <p>Expense</p>
-                <p class="expense-amount">$530</p>
+                <p class="expense-amount">${{ totalExpenses.toFixed(2) }}</p>
             </div>
         </div>
         <div></div>
