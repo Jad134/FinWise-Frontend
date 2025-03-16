@@ -1,10 +1,14 @@
 <section>
     <div class="main-div">
         <div class="period-container">
-            <div [ngClass]="{'period-active': selectedPeriod === 'daily'}" (click)="fetchData('daily')" class="period">Daily</div>
-            <div [ngClass]="{'period-active': selectedPeriod === 'weekly'}" (click)="fetchData('weekly')" class="period">Weekly</div>
-            <div [ngClass]="{'period-active': selectedPeriod === 'monthly'}" (click)="fetchData('monthly')" class="period">Monthly</div>
-            <div [ngClass]="{'period-active': selectedPeriod === 'yearly'}" (click)="fetchData('yearly')" class="period">Year</div>
+            <div [ngClass]="{'period-active': selectedPeriod === 'daily'}" (click)="fetchData('daily')" class="period">
+                Daily</div>
+            <div [ngClass]="{'period-active': selectedPeriod === 'weekly'}" (click)="fetchData('weekly')"
+                class="period">Weekly</div>
+            <div [ngClass]="{'period-active': selectedPeriod === 'monthly'}" (click)="fetchData('monthly')"
+                class="period">Monthly</div>
+            <div [ngClass]="{'period-active': selectedPeriod === 'yearly'}" (click)="fetchData('yearly')"
+                class="period">Year</div>
         </div>
         <div class="bar-chart-section">
             <app-bar-chart></app-bar-chart>
@@ -21,6 +25,14 @@
                 <p class="expense-amount">${{ totalExpenses.toFixed(2) }}</p>
             </div>
         </div>
-        <div></div>
+        <div class="target-container">
+            <div>
+                <p>My Targets</p>
+            </div>
+            <div class="targets">
+                <div class="target-one"></div>
+                <div class="target-two"></div>
+            </div>
+        </div>
     </div>
 </section>
