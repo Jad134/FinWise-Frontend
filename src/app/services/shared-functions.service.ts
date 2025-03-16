@@ -72,5 +72,13 @@ export class FinanceService {
     const headers = this.getAuthToken()
     return this.http.get(`${this.apiService.EXPENSE_AMOUNT_URL}?period=${period}`, { headers });
   }
+
+  
+  getTopCategories(): Observable<any> {
+    const headers = this.getAuthToken();
+    const url = this.apiService.TOP_CATEGORIES_URL;
+
+    return this.http.get(url, { headers });
+}
   
 }

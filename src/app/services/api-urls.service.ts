@@ -13,4 +13,5 @@ export class ApiUrlsService {
   TOTAL_BALANCE_URL = `${this.BASE_URL}/overview/`;
   INCOME_AMOUNT_URL = `${this.BASE_URL}/income/`;
   EXPENSE_AMOUNT_URL = `${this.BASE_URL}/expense/`
+  TOP_CATEGORIES_URL = `${this.BASE_URL}/top-categories/`
 }

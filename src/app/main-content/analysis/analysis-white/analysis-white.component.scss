@@ -74,17 +74,21 @@ section {
 
 
 
-.targets{
+.expenses-overview{
     display: flex;
     gap: 24px;
     margin-top: 24px;
 }
 
-.target-one,
-.target-two {
+.expense-one,
+.expense-two {
     width: 160px;
     height: 160px;
     background-color: $light-blue;
     display: flex;
     border-radius: 48px;
+}
+
+.expenses-overview-headline{
+    font-size: 18px;
 }
