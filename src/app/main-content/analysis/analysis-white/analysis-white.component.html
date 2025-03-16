@@ -1,10 +1,10 @@
 <section>
     <div class="main-div">
         <div class="period-container">
-            <div (click)="fetchData('daily')" class="period">Daily</div>
-            <div (click)="fetchData('weekly')" class="period">Weekly</div>
-            <div (click)="fetchData('monthly')" class="period">Monthly</div>
-            <div (click)="fetchData('yearly')" class="period">Year</div>
+            <div [ngClass]="{'period-active': selectedPeriod === 'daily'}" (click)="fetchData('daily')" class="period">Daily</div>
+            <div [ngClass]="{'period-active': selectedPeriod === 'weekly'}" (click)="fetchData('weekly')" class="period">Weekly</div>
+            <div [ngClass]="{'period-active': selectedPeriod === 'monthly'}" (click)="fetchData('monthly')" class="period">Monthly</div>
+            <div [ngClass]="{'period-active': selectedPeriod === 'yearly'}" (click)="fetchData('yearly')" class="period">Year</div>
         </div>
         <div class="bar-chart-section">
             <app-bar-chart></app-bar-chart>

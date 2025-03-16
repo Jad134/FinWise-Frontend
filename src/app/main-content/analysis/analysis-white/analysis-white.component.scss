@@ -26,13 +26,17 @@ section {
 }
 
 .period {
-    background-color: $main-green;
     width: 80px;
     height: 57px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 16px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.period-active {
+    background-color: $main-green;
 }
 
 .income-expense-overview-container {
@@ -57,10 +61,10 @@ section {
     gap: 4px;
 }
 
-.income-amount{
-font-size: 24px;
+.income-amount {
+    font-size: 24px;
 }
 
-.expense-amount{
-font-size: 24px;
+.expense-amount {
+    font-size: 24px;
 }

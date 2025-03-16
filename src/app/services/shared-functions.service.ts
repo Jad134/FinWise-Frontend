@@ -67,6 +67,7 @@ export class FinanceService {
     return this.http.get(`${this.apiService.INCOME_AMOUNT_URL}?period=${period}`, { headers });
   }
 
+  
   getExpenses(period: string): Observable<any> {
     const headers = this.getAuthToken()
     return this.http.get(`${this.apiService.EXPENSE_AMOUNT_URL}?period=${period}`, { headers });

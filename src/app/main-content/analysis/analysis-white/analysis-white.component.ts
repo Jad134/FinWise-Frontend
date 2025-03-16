@@ -1,13 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { BarChartComponent } from "../../../shared/components/bar-chart/bar-chart.component";
 import { FinanceService } from '../../../services/shared-functions.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-analysis-white',
     standalone: true,
     templateUrl: './analysis-white.component.html',
     styleUrl: './analysis-white.component.scss',
-    imports: [BarChartComponent]
+    imports: [BarChartComponent, CommonModule]
 })
 export class AnalysisWhiteComponent {
 
