@@ -19,13 +19,15 @@ export class AnalysisWhiteComponent {
 
     }
 
+    circumference = 2 * Math.PI * 45; // 45 ist der Radius
+
     apiService = inject(ApiUrlsService)
     sharedFunctions = inject(FinanceService)
     selectedPeriod: string = 'daily';
     totalIncome: number = 0;
     totalExpenses: number = 0;
     monthlyIncome: number = 1;
-    topCategories: { category: string, total_amount: number, percantage:number }[] = [];
+    topCategories: { category: string, total_amount: number, percentage:number }[] = [];
 
 
 
@@ -66,6 +68,11 @@ export class AnalysisWhiteComponent {
             }));
             console.log("Top Categories:", this.topCategories, this.monthlyIncome);
         });
+    }
+
+
+    getProgressOffset(percentage: number): number {
+        return this.circumference * (1 - percentage / 100);
     }
 
 
