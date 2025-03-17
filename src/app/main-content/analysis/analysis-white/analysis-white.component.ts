@@ -54,21 +54,23 @@ export class AnalysisWhiteComponent {
     loadMonthlyIncome() {
         this.sharedFunctions.getIncome("monthly").subscribe(data => {
             this.monthlyIncome = data.reduce((sum: number, income: any) => sum + parseFloat(income.amount), 0) || 1;
-            console.log(this.monthlyIncome);
+            console.log("Monthly Income loaded:", this.monthlyIncome);
+    
+            this.getTopCategories();
         });
-        this.getTopCategories()
     }
-
+    
     getTopCategories() {
         this.sharedFunctions.getTopCategories().subscribe(categories => {
             this.topCategories = categories.map((category: { category: any; total_amount: number; }) => ({
                 category: category.category,
                 amount: category.total_amount,
-                percentage: (category.total_amount / this.monthlyIncome) * 100
+                percentage: Math.round((category.total_amount / this.monthlyIncome) * 100)
             }));
             console.log("Top Categories:", this.topCategories, this.monthlyIncome);
         });
     }
+    
 
 
     getProgressOffset(percentage: number): number {
