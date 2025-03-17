@@ -78,6 +78,7 @@ section {
     display: flex;
     gap: 24px;
     margin-top: 24px;
+
 }
 
 .expense-one,
@@ -86,9 +87,16 @@ section {
     height: 160px;
     background-color: $light-blue;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border-radius: 48px;
 }
 
 .expenses-overview-headline{
     font-size: 18px;
+}
+
+.overview-category{
+    color: white;
 }
