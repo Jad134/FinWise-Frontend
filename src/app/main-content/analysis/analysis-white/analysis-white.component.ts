@@ -16,7 +16,7 @@ export class AnalysisWhiteComponent {
     constructor() {
         this.fetchData('daily')
         this.loadMonthlyIncome();
-        this.getTopCategories()
+
     }
 
     apiService = inject(ApiUrlsService)
@@ -53,8 +53,8 @@ export class AnalysisWhiteComponent {
         this.sharedFunctions.getIncome("monthly").subscribe(data => {
             this.monthlyIncome = data.reduce((sum: number, income: any) => sum + parseFloat(income.amount), 0) || 1;
             console.log(this.monthlyIncome);
-
         });
+        this.getTopCategories()
     }
 
     getTopCategories() {
@@ -64,7 +64,7 @@ export class AnalysisWhiteComponent {
                 amount: category.total_amount,
                 percentage: (category.total_amount / this.monthlyIncome) * 100
             }));
-            console.log("Top Categories:", this.topCategories);
+            console.log("Top Categories:", this.topCategories, this.monthlyIncome);
         });
     }
 
