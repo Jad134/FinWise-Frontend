@@ -7,6 +7,8 @@ import { HomeGreenComponent } from './main-content/home/home-green/home-green.co
 import { HomeWhiteComponent } from './main-content/home/home-white/home-white.component';
 import { AnalysisGreenComponent } from './main-content/analysis/analysis-green/analysis-green.component';
 import { AnalysisWhiteComponent } from './main-content/analysis/analysis-white/analysis-white.component';
+import { TransactionGreenComponent } from './main-content/transaction/transaction-green/transaction-green.component';
+import { TransactionWhiteComponent } from './main-content/transaction/transaction-white/transaction-white.component';
 
 export const routes: Routes = [
     {
@@ -25,6 +27,13 @@ export const routes: Routes = [
                 children: [
                   { path: '', component: AnalysisGreenComponent, outlet: 'green' },
                   { path: '', component: AnalysisWhiteComponent, outlet: 'white' }
+                ]
+              },
+              {
+                path: 'transaction',
+                children: [
+                  { path: '', component: TransactionGreenComponent, outlet: 'green' },
+                  { path: '', component: TransactionWhiteComponent, outlet: 'white' }
                 ]
               }
         ]
