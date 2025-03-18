@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-transaction-green',
@@ -9,4 +10,11 @@ import { Component } from '@angular/core';
 })
 export class TransactionGreenComponent {
 
+  constructor(private router: Router) {
+  }
+
+
+  routeToHome() {
+    this.router.navigate(['dashboard/home'])
+  }
 }

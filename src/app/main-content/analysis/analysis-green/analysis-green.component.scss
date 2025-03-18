@@ -12,6 +12,11 @@ section {
     padding-inline: 24px;
 }
 
+.arrow-left {
+    width: 40px;
+    height: 40px;
+}
+
 .headline {
     font-family: $poppins;
     font-size: 20px;
@@ -110,7 +115,3 @@ section {
     gap: 8px;
 }
 
-.arrow-left {
-    width: 40px;
-    height: 40px;
-}

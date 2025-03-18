@@ -1,0 +1,24 @@
+@import "../../../../styles.scss";
+
+section {
+    width: 100vw;
+}
+
+.header {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 24px;
+}
+
+.headline {
+    font-family: $poppins;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.arrow-left {
+    width: 40px;
+    height: 40px;
+}

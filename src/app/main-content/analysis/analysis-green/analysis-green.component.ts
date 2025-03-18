@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FinanceService } from '../../../services/shared-functions.service';
 import { BehaviorSubject } from 'rxjs';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-analysis-green',
