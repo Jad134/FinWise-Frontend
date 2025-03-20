@@ -13,10 +13,14 @@ import { BehaviorSubject } from 'rxjs';
 export class TransactionGreenComponent {
 
   constructor(private router: Router) {
-    this.getTotalBalance()
+    this.getTotalBalance();
+    this.getIncome();
+    this.getExpense();
   }
 
   totalBalance: number = 0;
+  totalIncome: number = 0;
+  totalExpenses: number = 0;
   sharedFunctionService = inject(FinanceService)
 
   private totalBalance$ = new BehaviorSubject<number | undefined>(undefined);
@@ -33,6 +37,24 @@ export class TransactionGreenComponent {
     this.sharedFunctionService.getTotalBalance().subscribe(balance => {
       this.totalBalance = balance;
       this.totalBalance$.next(balance);
+    });
+  }
+
+  getIncome() {
+    this.sharedFunctionService.getIncome('monthly').subscribe(data => {
+      this.totalIncome = data.reduce((sum: number, income: any) => sum + parseFloat(income.amount), 0);
+    });
+  }
+
+
+
+  /**
+  * Retrieves the total expenses for a given time period.
+  * @param period The selected time period
+  */
+  getExpense() {
+    this.sharedFunctionService.getExpenses('monthly').subscribe(data => {
+      this.totalExpenses = data.reduce((sum: number, expense: any) => sum + parseFloat(expense.amount), 0);
     });
   }
 }
