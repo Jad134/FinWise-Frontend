@@ -29,6 +29,10 @@ section {
     height: 80px;
     background-color: white;
     border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .main-div {
@@ -50,4 +54,17 @@ section {
     background-color: white;
     height: 60px;
     border-radius: 16px;
+}
+
+.total-balance-text{
+    font-size: 18px;
+    color: $dark-green;
+    font-family: $poppins;
+    font-weight: bolder;
+}
+
+.total-balance-amount{
+    font-size: 24px;
+    font-weight: bold;
+    font-family: $poppins;
 }
