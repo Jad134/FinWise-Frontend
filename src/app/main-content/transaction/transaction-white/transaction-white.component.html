@@ -9,12 +9,12 @@
                 <div class="overview-informations">
                     <div>
                         <p>{{expense.category}}</p>
-                        <p class="overview-time-detail">2025-03-07</p>
+                        <p class="overview-time-detail">{{expense.date}}</p>
                     </div>
                     <div class="overview-seperator"></div>
-                    <div class="overview-period-description">geschäft</div>
+                    <div class="overview-period-description">{{ expense.description.length > 9 ? (expense.description | slice:0:9) + '...' : expense.description }}</div>
                     <div class="overview-seperator"></div>
-                    <div class="expense-amount">500€</div>
+                    <div class="expense-amount">{{expense.amount}}</div>
                 </div>
             </div>
         </div>
