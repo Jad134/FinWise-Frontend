@@ -80,5 +80,13 @@ export class FinanceService {
 
     return this.http.get(url, { headers });
 }
+
+getAllExpenses(){
+  const token = sessionStorage.getItem('token');
+  const headers = this.getAuthToken()
+  const url = `http://127.0.0.1:8000/api/expense/`;
+  
+  return this.http.get(url, { headers })
+}
   
 }
