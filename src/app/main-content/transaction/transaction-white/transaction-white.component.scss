@@ -1,0 +1,74 @@
+@import "../../../../styles.scss";
+
+
+section {
+    width: 100vw;
+    font-family: $poppins;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.main-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.list-header{
+    width: 100%;
+    display: flex;
+    height: 30px;
+    margin-top: 40px;
+    justify-content: end;
+    padding-inline: 24px;
+}
+
+.calender-icon{
+    margin-right: 24px;
+}
+
+.list {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .overview-information-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .overview-informations {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .overview-time-detail {
+    font-size: 12px;
+    color: $ocean-blue;
+    font-weight: bolder;
+  }
+
+  .overview-seperator {
+    width: 2px;
+    height: 40px;
+    background-color: $main-green;
+  }
+
+  .overview-period-description {
+    font-size: 13px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .expense-amount{
+    width: 80px;
+  }
+
