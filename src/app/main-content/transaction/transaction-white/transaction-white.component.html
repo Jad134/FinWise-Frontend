@@ -3,8 +3,8 @@
         <div class="list-header">
             <img class="calender-icon" src="/assets/icons/small-calender.svg" alt="">
         </div>
-        <div class="list">
-            <div *ngFor="let expense of expensesList"  class="overview-information-container">
+        <div (scroll)="onScroll()" class="list">
+            <div  *ngFor="let expense of expensesList"  class="overview-information-container">
                 <div><img class="overview-icon" src="/assets/icons/blue-dollar-icon.svg" alt=""></div>
                 <div class="overview-informations">
                     <div>

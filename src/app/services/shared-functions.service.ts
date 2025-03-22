@@ -81,12 +81,10 @@ export class FinanceService {
     return this.http.get(url, { headers });
 }
 
-getLazyLoadingExpenses(){
+getLazyLoadingExpenses(url: string = this.apiService.LAZY_LOADING_EXPENSE_URL): Observable<any> {
   const token = sessionStorage.getItem('token');
-  const headers = this.getAuthToken()
-  const url = this.apiService.LAZY_LOADING_EXPENSE_URL ;
-  
-  return this.http.get(url, { headers })
+  const headers = this.getAuthToken(); 
+  return this.http.get<any>(url, { headers });
 }
   
 }
