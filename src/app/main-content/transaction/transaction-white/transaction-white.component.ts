@@ -17,10 +17,12 @@ export class TransactionWhiteComponent {
   sharedFunctionService = inject(FinanceService)
   expensesList: any[] = [];
 
-  getAllExpenses(){
-    this.sharedFunctionService.getAllExpenses().subscribe(expenses => {
-      this.expensesList = expenses as any;
-      console.log(`all expenses`, expenses);
+  getAllExpenses() {
+    this.sharedFunctionService.getAllExpenses().subscribe((expenses: any) => {
+      this.expensesList = (expenses as any[]).sort((a, b) => 
+        new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+      console.log(`all expenses`, this.expensesList);
     });
   }
 }
