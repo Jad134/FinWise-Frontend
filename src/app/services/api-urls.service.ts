@@ -12,6 +12,8 @@ export class ApiUrlsService {
   LOGIN_URL = `${this.BASE_URL}/login/`;
   TOTAL_BALANCE_URL = `${this.BASE_URL}/overview/`;
   INCOME_AMOUNT_URL = `${this.BASE_URL}/income/`;
-  EXPENSE_AMOUNT_URL = `${this.BASE_URL}/expense/`
-  TOP_CATEGORIES_URL = `${this.BASE_URL}/top-categories/`
+  EXPENSE_AMOUNT_URL = `${this.BASE_URL}/expense/`;
+  LAZY_LOADING_EXPENSE_URL = `${this.BASE_URL}/latest-expenses/`
+  TOP_CATEGORIES_URL = `${this.BASE_URL}/top-categories/`;
+
 }

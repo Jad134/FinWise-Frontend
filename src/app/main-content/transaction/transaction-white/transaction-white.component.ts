@@ -17,12 +17,12 @@ export class TransactionWhiteComponent {
   sharedFunctionService = inject(FinanceService)
   expensesList: any[] = [];
 
+
   getAllExpenses() {
-    this.sharedFunctionService.getAllExpenses().subscribe((expenses: any) => {
-      this.expensesList = (expenses as any[]).sort((a, b) => 
-        new Date(b.date).getTime() - new Date(a.date).getTime()
-      );
-      console.log(`all expenses`, this.expensesList);
+    this.sharedFunctionService.getLazyLoadingExpenses().subscribe((response: any) => {
+      // Extrahiere die 'results' aus der Antwort und speichere sie in der List
+      this.expensesList = response.results;  // 'results' enthält die eigentlichen Ausgaben
+      console.log('All expenses:', this.expensesList);
     });
   }
 }
