@@ -4,11 +4,15 @@
             <img class="calender-icon" src="/assets/icons/small-calender.svg" alt="">
         </div>
         <div (scroll)="onScroll()" class="list">
-            <div  *ngFor="let expense of expensesList"  class="overview-information-container">
+            <div  *ngFor="let expense of expensesList ; let i = index" class="overview-information-container">
+                <div *ngIf="isNewMonth(expense, i)" class="month-header">
+                    <span>{{ getMonthName(expense.date) }}</span>
+                  </div>
                 <div><img class="overview-icon" src="/assets/icons/blue-dollar-icon.svg" alt=""></div>
+                
                 <div class="overview-informations">
                     <div>
-                        <p>{{expense.category}}</p>
+                        <p>{{ expense.category.length > 6 ? (expense.category | slice:0:7) + '...' : expense.category}}</p>
                         <p class="overview-time-detail">{{expense.date}}</p>
                     </div>
                     <div class="overview-seperator"></div>
