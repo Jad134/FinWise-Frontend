@@ -10,83 +10,91 @@ import { CommonModule } from '@angular/common';
   styleUrl: './transaction-white.component.scss'
 })
 export class TransactionWhiteComponent implements AfterViewInit {
-  constructor() {
-    this.getAllExpenses();
-  }
-
   sharedFunctionService = inject(FinanceService);
   expensesList: any[] = [];
   nextUrl: string | null = null;
   currentMonth: string = '';
-  observer: IntersectionObserver | null = null;
-  isLoading = false; // Zustand für laufende Requests
+  isLoading = false;
+
+  constructor() {
+    this.getAllExpenses();
+  }
 
   ngAfterViewInit() {
-    this.setupObserver();
+    this.setupScrollListener();
   }
+
 
   getAllExpenses() {
     this.sharedFunctionService.getLazyLoadingExpenses().subscribe((response: any) => {
       this.expensesList = response.results;
       this.nextUrl = response.next;
-      setTimeout(() => this.setupObserver(), 100); // Sicherstellen, dass der Observer sich neu registriert
+      console.log(this.expensesList);
+
     });
   }
 
-  onScroll() {
-    if (this.isLoading) return; // Verhindere Mehrfach-Requests während des Ladens
-
-    const element = document.querySelector('.list') as HTMLElement;
-    if (element.scrollTop + element.clientHeight >= element.scrollHeight - 50) {
-      if (this.nextUrl) {
-        this.loadMoreExpenses();
-      }
-    }
-  }
 
   loadMoreExpenses() {
-    if (!this.nextUrl || this.isLoading) return;
+    if (this.isLoading || !this.nextUrl) return;
 
     this.isLoading = true;
     this.sharedFunctionService.getLazyLoadingExpenses(this.nextUrl).subscribe((response: any) => {
       this.expensesList = [...this.expensesList, ...response.results];
       this.nextUrl = response.next;
       this.isLoading = false;
-
-      setTimeout(() => this.setupObserver(), 100); // Sicherstellen, dass neue Elemente beobachtet werden
+      console.log(this.expensesList)
     });
   }
 
-  setupObserver() {
-    if (this.observer) {
-      this.observer.disconnect(); // Alten Observer entfernen
+
+  setupScrollListener() {
+    const listContainer = document.querySelector('.list') as HTMLElement;
+    listContainer.addEventListener('scroll', this.onScroll.bind(this));
+    this.onScroll();
+  }
+
+
+  onScroll() {
+    if (this.isLoading) return;
+
+    const listContainer = document.querySelector('.list') as HTMLElement;
+
+    if (listContainer.scrollTop + listContainer.clientHeight >= listContainer.scrollHeight - 50) {
+      if (this.nextUrl) {
+        this.loadMoreExpenses();
+      }
     }
+    this.checkMonthChange();
+  }
 
-    // Erstelle einen neuen Observer
-    this.observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          // Wenn die Ausgabe den oberen Bereich erreicht, wechseln wir den Monat
-          const expenseId = entry.target.getAttribute('data-expense-id');
-          const expense = this.expensesList.find((e: any) => e.id == expenseId);
 
-          if (expense) {
-            const monthName = this.getMonthName(expense.date);
+  checkMonthChange() {
+    const expenseElements = document.querySelectorAll('.overview-information-container');
+    const listContainer = document.querySelector('.list') as HTMLElement;
 
-            // Monat wechseln, wenn der Monat nicht bereits angezeigt wird
-            if (this.currentMonth !== monthName) {
-              this.currentMonth = monthName;
-              console.log('Aktueller Monat:', this.currentMonth);
-            }
+    for (let i = 0; i < expenseElements.length; i++) {
+      const expenseElement = expenseElements[i];
+      const rect = expenseElement.getBoundingClientRect();
+      const offsetTop = rect.top - listContainer.getBoundingClientRect().top;
+
+      if (offsetTop <= 0 && offsetTop >= -rect.height) {
+        const expenseId = expenseElement.getAttribute('data-expense-id');
+        const expense = this.expensesList.find((e: any) => e.id == expenseId);
+
+        if (expense) {
+          const monthName = this.getMonthName(expense.date);
+
+          if (this.currentMonth !== monthName) {
+            this.currentMonth = monthName;
+            console.log('Aktueller Monat:', this.currentMonth);
+            break;
           }
         }
       }
-    }, { root: document.querySelector('.list'), threshold: 1.0});
-
-    // Beobachte alle Ausgaben
-    const expenseElements = document.querySelectorAll('.overview-information-container');
-    expenseElements.forEach(el => this.observer?.observe(el));
+    }
   }
+
 
   getMonthName(date: string): string {
     const monthNames = [
