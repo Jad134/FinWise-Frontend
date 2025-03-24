@@ -30,10 +30,15 @@ export class TransactionWhiteComponent implements AfterViewInit {
       this.expensesList = response.results;
       this.nextUrl = response.next;
       console.log(this.expensesList);
-
+      this.setCurrentMonthOnInit()
     });
   }
 
+  setCurrentMonthOnInit() {
+   let currentDate = this.expensesList[0].date
+   let currentMonth = this.getMonthName(currentDate)
+   this.currentMonth = currentMonth
+  }
 
   loadMoreExpenses() {
     if (this.isLoading || !this.nextUrl) return;
