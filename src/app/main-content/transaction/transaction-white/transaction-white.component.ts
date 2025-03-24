@@ -35,9 +35,9 @@ export class TransactionWhiteComponent implements AfterViewInit {
   }
 
   setCurrentMonthOnInit() {
-   let currentDate = this.expensesList[0].date
-   let currentMonth = this.getMonthName(currentDate)
-   this.currentMonth = currentMonth
+    let currentDate = this.expensesList[0].date
+    let currentMonth = this.getMonthName(currentDate)
+    this.currentMonth = currentMonth
   }
 
   loadMoreExpenses() {
@@ -62,15 +62,18 @@ export class TransactionWhiteComponent implements AfterViewInit {
 
   onScroll() {
     if (this.isLoading) return;
-
-    const listContainer = document.querySelector('.list') as HTMLElement;
-
-    if (listContainer.scrollTop + listContainer.clientHeight >= listContainer.scrollHeight - 50) {
+    if (this.hasScrolledToBottom()) {
       if (this.nextUrl) {
         this.loadMoreExpenses();
       }
     }
     this.checkMonthChange();
+  }
+
+  
+  hasScrolledToBottom(): boolean {
+    const listContainer = document.querySelector('.list') as HTMLElement;
+    return listContainer.scrollTop + listContainer.clientHeight >= listContainer.scrollHeight - 50;
   }
 
 
@@ -79,23 +82,35 @@ export class TransactionWhiteComponent implements AfterViewInit {
     const listContainer = document.querySelector('.list') as HTMLElement;
 
     for (let i = 0; i < expenseElements.length; i++) {
-      const expenseElement = expenseElements[i];
-      const rect = expenseElement.getBoundingClientRect();
-      const offsetTop = rect.top - listContainer.getBoundingClientRect().top;
+      const expenseElement = expenseElements[i] as HTMLElement;
+      const offsetTop = this.calculateOffsetTop(expenseElement, listContainer);  
+      this.triggerMonthChangeOnVisibility(offsetTop, expenseElement)
+    }
+  }
 
-      if (offsetTop <= 0 && offsetTop >= -rect.height) {
-        const expenseId = expenseElement.getAttribute('data-expense-id');
-        const expense = this.expensesList.find((e: any) => e.id == expenseId);
 
-        if (expense) {
-          const monthName = this.getMonthName(expense.date);
+  calculateOffsetTop(expenseElement: HTMLElement, listContainer: HTMLElement): number {
+    const rect = expenseElement.getBoundingClientRect();
+    return rect.top - listContainer.getBoundingClientRect().top;
+  }
 
-          if (this.currentMonth !== monthName) {
-            this.currentMonth = monthName;
-            console.log('Aktueller Monat:', this.currentMonth);
-            break;
-          }
-        }
+
+  triggerMonthChangeOnVisibility(offsetTop: any, expenseElement:any) {
+    if (offsetTop <= 0 && offsetTop >= -expenseElement.getBoundingClientRect().height) {
+      const expenseId = expenseElement.getAttribute('data-expense-id');
+      const expense = this.expensesList.find((e: any) => e.id == expenseId);
+      this.changeCurrentMonthName(expense)
+    }
+  }
+
+
+  changeCurrentMonthName(expense: any) {
+    if (expense) {
+      const monthName = this.getMonthName(expense.date);
+
+      if (this.currentMonth !== monthName) {
+        this.currentMonth = monthName;
+        console.log('Aktueller Monat:', this.currentMonth);
       }
     }
   }
