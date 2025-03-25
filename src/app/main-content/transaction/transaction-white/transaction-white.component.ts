@@ -25,6 +25,9 @@ export class TransactionWhiteComponent implements AfterViewInit {
   }
 
 
+  /**
+  * Fetches all expenses using the FinanceService and initializes the month display.
+  */
   getAllExpenses() {
     this.sharedFunctionService.getLazyLoadingExpenses().subscribe((response: any) => {
       this.expensesList = response.results;
@@ -34,12 +37,20 @@ export class TransactionWhiteComponent implements AfterViewInit {
     });
   }
 
+
+  /**
+ * Sets the current month based on the first expense in the list.
+ */
   setCurrentMonthOnInit() {
     let currentDate = this.expensesList[0].date
-    let currentMonth = this.getMonthName(currentDate)
+    let currentMonth = this.extractMonthFromDate(currentDate)
     this.currentMonth = currentMonth
   }
 
+
+  /**
+  * Loads more expenses if available and not already loading.
+  */
   loadMoreExpenses() {
     if (this.isLoading || !this.nextUrl) return;
 
@@ -53,6 +64,9 @@ export class TransactionWhiteComponent implements AfterViewInit {
   }
 
 
+  /**
+ * Sets up a scroll event listener to trigger lazy loading and month changes.
+ */
   setupScrollListener() {
     const listContainer = document.querySelector('.list') as HTMLElement;
     listContainer.addEventListener('scroll', this.onScroll.bind(this));
@@ -60,6 +74,11 @@ export class TransactionWhiteComponent implements AfterViewInit {
   }
 
 
+
+  /**
+ * Handles the scroll event to determine if more expenses should be loaded
+ * or if the displayed month should change.
+ */
   onScroll() {
     if (this.isLoading) return;
     if (this.hasScrolledToBottom()) {
@@ -70,43 +89,69 @@ export class TransactionWhiteComponent implements AfterViewInit {
     this.checkMonthChange();
   }
 
-  
+
+  /**
+ * Checks if the user has scrolled to the bottom of the list.
+ * @returns {boolean} - True if near the bottom, false otherwise.
+ */
   hasScrolledToBottom(): boolean {
     const listContainer = document.querySelector('.list') as HTMLElement;
     return listContainer.scrollTop + listContainer.clientHeight >= listContainer.scrollHeight - 50;
   }
 
 
+  /**
+ * Iterates through expense elements to check if the displayed month should change.
+ */
   checkMonthChange() {
     const expenseElements = document.querySelectorAll('.overview-information-container');
     const listContainer = document.querySelector('.list') as HTMLElement;
 
     for (let i = 0; i < expenseElements.length; i++) {
       const expenseElement = expenseElements[i] as HTMLElement;
-      const offsetTop = this.calculateOffsetTop(expenseElement, listContainer);  
-      this.triggerMonthChangeOnVisibility(offsetTop, expenseElement)
+
+      const rect = expenseElement.getBoundingClientRect();
+      const offsetTop = this.calculateOffsetTop(rect, listContainer);
+      const elementHeight = rect.height;
+
+      this.triggerMonthChangeOnVisibility(offsetTop, elementHeight, expenseElement);
     }
   }
 
 
-  calculateOffsetTop(expenseElement: HTMLElement, listContainer: HTMLElement): number {
-    const rect = expenseElement.getBoundingClientRect();
+   /**
+   * Calculates the vertical offset of an element relative to the list container.
+   * @param {DOMRect} rect - The bounding rectangle of the expense element.
+   * @param {HTMLElement} listContainer - The scrolling container.
+   * @returns {number} - The computed offset.
+   */
+  calculateOffsetTop(rect: DOMRect, listContainer: HTMLElement): number {
     return rect.top - listContainer.getBoundingClientRect().top;
   }
 
 
-  triggerMonthChangeOnVisibility(offsetTop: any, expenseElement:any) {
-    if (offsetTop <= 0 && offsetTop >= -expenseElement.getBoundingClientRect().height) {
+    /**
+   * Determines if an expense is in view and updates the displayed month accordingly.
+   * @param {number} offsetTop - The vertical offset of the expense element.
+   * @param {number} elementHeight - The height of the expense element.
+   * @param {HTMLElement} expenseElement - The expense element.
+   */
+  triggerMonthChangeOnVisibility(offsetTop: number, elementHeight: number, expenseElement: HTMLElement) {
+    if (offsetTop <= 0 && offsetTop >= -elementHeight) {
       const expenseId = expenseElement.getAttribute('data-expense-id');
       const expense = this.expensesList.find((e: any) => e.id == expenseId);
-      this.changeCurrentMonthName(expense)
+      this.changeCurrentMonthName(expense);
     }
   }
 
 
+  /**
+   * Updates the displayed month name based on the given expense.
+   * @param {any} expense - The expense whose date determines the month.
+   */
   changeCurrentMonthName(expense: any) {
     if (expense) {
-      const monthName = this.getMonthName(expense.date);
+      const monthName = this.extractMonthFromDate(expense.date);
 
       if (this.currentMonth !== monthName) {
         this.currentMonth = monthName;
@@ -116,7 +161,12 @@ export class TransactionWhiteComponent implements AfterViewInit {
   }
 
 
-  getMonthName(date: string): string {
+    /**
+   * Extracts the month name from a given date string.
+   * @param {string} date - The date string.
+   * @returns {string} - The month name in German.
+   */
+  extractMonthFromDate(date: string): string {
     const monthNames = [
       'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
       'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
