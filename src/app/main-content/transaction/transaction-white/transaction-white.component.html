@@ -4,7 +4,8 @@
             <div *ngIf="currentMonth" class="month-header">
                 <span class="currentMonth">{{ currentMonth }}</span>
               </div>
-            <img  class="calender-icon" src="/assets/icons/small-calender.svg" alt="">
+            <img (click)="calendar.overlayVisible = !calendar.overlayVisible" class="calender-icon" src="/assets/icons/small-calender.svg" alt="">
+            <p-calendar #calendar [(ngModel)]="dateValue" [showTime]="true" [appendTo]="'body'"></p-calendar>
         </div>
         <div (scroll)="onScroll()" class="list">
 

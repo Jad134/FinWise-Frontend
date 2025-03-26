@@ -5,11 +5,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CalendarModule } from 'primeng/calendar';
+import { FormsModule } from '@angular/forms';  // Importiere FormsModule
 
 @Component({
   selector: 'app-transaction-white',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, CalendarModule, FormsModule],
   templateUrl: './transaction-white.component.html',
   styleUrls: ['./transaction-white.component.scss'],
   
@@ -20,6 +22,8 @@ export class TransactionWhiteComponent implements AfterViewInit {
   nextUrl: string | null = null;
   currentMonth: string = '';
   isLoading = false;
+
+  dateValue: Date | undefined;  // Für das gebundene Datum
 
   constructor() {
     this.getAllExpenses();
