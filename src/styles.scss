@@ -3,6 +3,7 @@
     overflow: hidden;
 }
 
+
 /* Fonts*/
 $poppins :'Poppins';
 
@@ -59,3 +60,6 @@ $light-blue: #6DB6FE;
     font-weight: 900;
     src: url('../public/assets/fonts/poppins/poppins-v22-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

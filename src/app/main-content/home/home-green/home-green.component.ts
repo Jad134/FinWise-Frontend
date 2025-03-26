@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { FinanceService } from '../../../services/shared-functions.service';
 import { BehaviorSubject } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
   standalone: true,
   imports: [],
   templateUrl: './home-green.component.html',
-  styleUrl: './home-green.component.scss'
+  styleUrl: './home-green.component.scss',
 })
 export class HomeGreenComponent {
 

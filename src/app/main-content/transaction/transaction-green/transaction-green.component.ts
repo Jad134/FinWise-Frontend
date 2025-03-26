@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FinanceService } from '../../../services/shared-functions.service';
 import { BehaviorSubject } from 'rxjs';
@@ -8,7 +8,8 @@ import { BehaviorSubject } from 'rxjs';
   standalone: true,
   imports: [],
   templateUrl: './transaction-green.component.html',
-  styleUrl: './transaction-green.component.scss'
+  styleUrl: './transaction-green.component.scss',
+
 })
 export class TransactionGreenComponent {
 

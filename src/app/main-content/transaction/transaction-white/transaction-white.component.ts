@@ -1,13 +1,18 @@
-import { Component, inject, AfterViewInit } from '@angular/core';
+import { Component, inject, AfterViewInit, ViewEncapsulation} from '@angular/core';
 import { FinanceService } from '../../../services/shared-functions.service';
 import { CommonModule } from '@angular/common';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-transaction-white',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './transaction-white.component.html',
-  styleUrl: './transaction-white.component.scss'
+  styleUrls: ['./transaction-white.component.scss'],
+  
 })
 export class TransactionWhiteComponent implements AfterViewInit {
   sharedFunctionService = inject(FinanceService);
@@ -174,4 +179,5 @@ export class TransactionWhiteComponent implements AfterViewInit {
     const month = new Date(date).getMonth();
     return monthNames[month];
   }
+
 }
