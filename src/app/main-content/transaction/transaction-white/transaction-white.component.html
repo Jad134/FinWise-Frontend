@@ -7,8 +7,12 @@
             <img (click)="toggleCalendar()" class="calender-icon" src="/assets/icons/small-calender.svg" alt="">
 
         </div>
-        <p-calendar #calendar [(ngModel)]="selectedDate" [showIcon]="false" [appendTo]="'body'" [inline]="false">
-        </p-calendar>
+
+        <p-datepicker *ngIf="calendarVisible" #calendar [(ngModel)]="selectedDate" [inline]="true" [showIcon]="false"
+            [appendTo]="'body'">
+        </p-datepicker>
+
+        
         <div (scroll)="onScroll()" class="list">
 
             <div [attr.data-expense-id]="expense.id" *ngFor="let expense of expensesList ; let i = index"

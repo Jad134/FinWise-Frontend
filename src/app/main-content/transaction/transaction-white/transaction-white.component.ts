@@ -1,17 +1,18 @@
-import { Component, inject, AfterViewInit, ViewEncapsulation} from '@angular/core';
+import { Component, inject, AfterViewInit, ViewEncapsulation, ViewChild} from '@angular/core';
 import { FinanceService } from '../../../services/shared-functions.service';
 import { CommonModule } from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import { CalendarModule } from 'primeng/calendar';
+import { Calendar, CalendarModule } from 'primeng/calendar';
+import { DatePickerModule } from 'primeng/datepicker';
 import { FormsModule } from '@angular/forms';  // Importiere FormsModule
 
 @Component({
   selector: 'app-transaction-white',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, CalendarModule, FormsModule],
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, CalendarModule, FormsModule,DatePickerModule,],
   templateUrl: './transaction-white.component.html',
   styleUrls: ['./transaction-white.component.scss'],
   
@@ -22,9 +23,9 @@ export class TransactionWhiteComponent implements AfterViewInit {
   nextUrl: string | null = null;
   currentMonth: string = '';
   isLoading = false;
-  selectedDate: Date = new Date();  // Speichert das gewählte Datum
+  selectedDate: any;  // Speichert das gewählte Datum
 
-  dateValue: Date | undefined;  // Für das gebundene Datum
+  calendarVisible: boolean = false;
 
   constructor() {
     this.getAllExpenses();
@@ -185,11 +186,11 @@ export class TransactionWhiteComponent implements AfterViewInit {
     return monthNames[month];
   }
 
+
   toggleCalendar() {
-    const calendarElement = document.querySelector("p-calendar .p-inputtext") as HTMLElement;
-    if (calendarElement) {
-      calendarElement.click(); // Löst das Öffnen des Kalenders aus
-    }
+    this.calendarVisible = !this.calendarVisible;  // Kalender bei Klick einblenden
+     console.log(this.selectedDate);
+    
   }
 
 }
