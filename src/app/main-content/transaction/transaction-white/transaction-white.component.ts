@@ -22,6 +22,7 @@ export class TransactionWhiteComponent implements AfterViewInit {
   nextUrl: string | null = null;
   currentMonth: string = '';
   isLoading = false;
+  selectedDate: Date = new Date();  // Speichert das gewählte Datum
 
   dateValue: Date | undefined;  // Für das gebundene Datum
 
@@ -182,6 +183,13 @@ export class TransactionWhiteComponent implements AfterViewInit {
     ];
     const month = new Date(date).getMonth();
     return monthNames[month];
+  }
+
+  toggleCalendar() {
+    const calendarElement = document.querySelector("p-calendar .p-inputtext") as HTMLElement;
+    if (calendarElement) {
+      calendarElement.click(); // Löst das Öffnen des Kalenders aus
+    }
   }
 
 }

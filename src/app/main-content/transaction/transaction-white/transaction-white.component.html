@@ -3,13 +3,16 @@
         <div class="list-header">
             <div *ngIf="currentMonth" class="month-header">
                 <span class="currentMonth">{{ currentMonth }}</span>
-              </div>
-            <img (click)="calendar.overlayVisible = !calendar.overlayVisible" class="calender-icon" src="/assets/icons/small-calender.svg" alt="">
-            <p-calendar #calendar [(ngModel)]="dateValue" [showTime]="true" [appendTo]="'body'"></p-calendar>
+            </div>
+            <img (click)="toggleCalendar()" class="calender-icon" src="/assets/icons/small-calender.svg" alt="">
+
         </div>
+        <p-calendar #calendar [(ngModel)]="selectedDate" [showIcon]="false" [appendTo]="'body'" [inline]="false">
+        </p-calendar>
         <div (scroll)="onScroll()" class="list">
 
-            <div [attr.data-expense-id]="expense.id" *ngFor="let expense of expensesList ; let i = index" class="overview-information-container  month-group">
+            <div [attr.data-expense-id]="expense.id" *ngFor="let expense of expensesList ; let i = index"
+                class="overview-information-container  month-group">
                 <div><img class="overview-icon" src="/assets/icons/blue-dollar-icon.svg" alt=""></div>
 
                 <div class="overview-informations">
@@ -28,4 +31,3 @@
         </div>
     </div>
 </section>
-
