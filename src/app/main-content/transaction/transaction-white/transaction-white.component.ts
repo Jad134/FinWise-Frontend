@@ -1,4 +1,4 @@
-import { Component, inject, AfterViewInit, ViewEncapsulation, ViewChild} from '@angular/core';
+import { Component, inject, AfterViewInit, ViewEncapsulation, ViewChild, ElementRef, HostListener} from '@angular/core';
 import { FinanceService } from '../../../services/shared-functions.service';
 import { CommonModule } from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -23,7 +23,7 @@ export class TransactionWhiteComponent implements AfterViewInit {
   nextUrl: string | null = null;
   currentMonth: string = '';
   isLoading = false;
-  selectedDate: any;  // Speichert das gewählte Datum
+  selectedDate: any;  
 
   calendarVisible: boolean = false;
 
@@ -192,5 +192,17 @@ export class TransactionWhiteComponent implements AfterViewInit {
      console.log(this.selectedDate);
     
   }
+
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+      if (this.calendarVisible) {
+          const calendarElement = document.querySelector('.calender');
+          if (calendarElement && !calendarElement.contains(event.target as Node)) {
+              this.calendarVisible = false;
+          }
+      }
+  }
+  
 
 }

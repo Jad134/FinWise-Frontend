@@ -1,4 +1,4 @@
-<section>
+<section >
     <div class="main-div">
         <div class="list-header">
             <div *ngIf="currentMonth" class="month-header">
@@ -8,8 +8,8 @@
 
         </div>
 
-        <p-datepicker *ngIf="calendarVisible" #calendar [(ngModel)]="selectedDate" [inline]="true" [showIcon]="false"
-            [appendTo]="'body'">
+        <p-datepicker class="calender" *ngIf="calendarVisible" #calendar [(ngModel)]="selectedDate" [inline]="true" [showIcon]="false"
+            >
         </p-datepicker>
 
         
