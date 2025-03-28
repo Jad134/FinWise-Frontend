@@ -1,9 +1,9 @@
-import { Component, inject, AfterViewInit, ViewEncapsulation, ViewChild, ElementRef, HostListener} from '@angular/core';
+import { Component, inject, AfterViewInit, ViewEncapsulation, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { FinanceService } from '../../../services/shared-functions.service';
 import { CommonModule } from '@angular/common';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Calendar, CalendarModule } from 'primeng/calendar';
 import { DatePickerModule } from 'primeng/datepicker';
@@ -12,10 +12,10 @@ import { FormsModule } from '@angular/forms';  // Importiere FormsModule
 @Component({
   selector: 'app-transaction-white',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, CalendarModule, FormsModule,DatePickerModule,],
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, CalendarModule, FormsModule, DatePickerModule,],
   templateUrl: './transaction-white.component.html',
   styleUrls: ['./transaction-white.component.scss'],
-  
+
 })
 export class TransactionWhiteComponent implements AfterViewInit {
   sharedFunctionService = inject(FinanceService);
@@ -23,7 +23,7 @@ export class TransactionWhiteComponent implements AfterViewInit {
   nextUrl: string | null = null;
   currentMonth: string = '';
   isLoading = false;
-  selectedDate: any;  
+  selectedDate: any;
 
   calendarVisible: boolean = false;
 
@@ -130,23 +130,23 @@ export class TransactionWhiteComponent implements AfterViewInit {
   }
 
 
-   /**
-   * Calculates the vertical offset of an element relative to the list container.
-   * @param {DOMRect} rect - The bounding rectangle of the expense element.
-   * @param {HTMLElement} listContainer - The scrolling container.
-   * @returns {number} - The computed offset.
-   */
+  /**
+  * Calculates the vertical offset of an element relative to the list container.
+  * @param {DOMRect} rect - The bounding rectangle of the expense element.
+  * @param {HTMLElement} listContainer - The scrolling container.
+  * @returns {number} - The computed offset.
+  */
   calculateOffsetTop(rect: DOMRect, listContainer: HTMLElement): number {
     return rect.top - listContainer.getBoundingClientRect().top;
   }
 
 
-    /**
-   * Determines if an expense is in view and updates the displayed month accordingly.
-   * @param {number} offsetTop - The vertical offset of the expense element.
-   * @param {number} elementHeight - The height of the expense element.
-   * @param {HTMLElement} expenseElement - The expense element.
-   */
+  /**
+ * Determines if an expense is in view and updates the displayed month accordingly.
+ * @param {number} offsetTop - The vertical offset of the expense element.
+ * @param {number} elementHeight - The height of the expense element.
+ * @param {HTMLElement} expenseElement - The expense element.
+ */
   triggerMonthChangeOnVisibility(offsetTop: number, elementHeight: number, expenseElement: HTMLElement) {
     if (offsetTop <= 0 && offsetTop >= -elementHeight) {
       const expenseId = expenseElement.getAttribute('data-expense-id');
@@ -172,11 +172,11 @@ export class TransactionWhiteComponent implements AfterViewInit {
   }
 
 
-    /**
-   * Extracts the month name from a given date string.
-   * @param {string} date - The date string.
-   * @returns {string} - The month name in German.
-   */
+  /**
+ * Extracts the month name from a given date string.
+ * @param {string} date - The date string.
+ * @returns {string} - The month name in German.
+ */
   extractMonthFromDate(date: string): string {
     const monthNames = [
       'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
@@ -188,21 +188,99 @@ export class TransactionWhiteComponent implements AfterViewInit {
 
 
   toggleCalendar() {
-    this.calendarVisible = !this.calendarVisible;  // Kalender bei Klick einblenden
-     console.log(this.selectedDate);
-    
+    this.calendarVisible = !this.calendarVisible;
+  
+    if (!this.calendarVisible && this.selectedDate) {
+      const formattedDate = this.formatDate(this.selectedDate);
+      this.scrollToDate(formattedDate);
+    }
+  }
+  
+  
+  formatDate(date: Date): string {
+    const year = date.getFullYear();  
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const day = String(date.getDate()).padStart(2, '0'); 
+  
+    return `${year}-${month}-${day}`;
+  }
+  
+  
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    if (this.calendarVisible) {
+      const calendarElement = document.querySelector('.calender');
+      if (calendarElement && !calendarElement.contains(event.target as Node)) {
+        if(this.selectedDate){
+          const formattedDate = this.formatDate(this.selectedDate);
+          this.scrollToDate(formattedDate);
+        }
+        this.calendarVisible = false;
+      }
+    }
   }
 
 
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: Event) {
-      if (this.calendarVisible) {
-          const calendarElement = document.querySelector('.calender');
-          if (calendarElement && !calendarElement.contains(event.target as Node)) {
-              this.calendarVisible = false;
-          }
+
+
+  scrollToDate(targetDate: string) { 
+    let targetExpense = this.expensesList.find(expense => expense.date === targetDate);
+  
+    if (!targetExpense) {
+      targetExpense = this.findClosestDate(targetDate);
+    }
+  
+    if (targetExpense) {
+     const expenseElement = document.querySelector(`[data-expense-id="${targetExpense.id}"]`);
+      if (expenseElement) {
+        expenseElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+
       }
+    } else {
+
+      if (this.nextUrl) {
+        this.loadMoreExpensesAndSearch(targetDate);
+      } else {
+
+      }
+    }
+  }
+
+
+  findClosestDate(targetDate: string): any {
+    const sortedExpenses = [...this.expensesList].sort((a, b) => 
+      new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
+  
+    let closestExpense = null;
+    let minDiff = Infinity;
+  
+    for (const expense of sortedExpenses) {
+      const expenseDate = new Date(expense.date).getTime();
+      const targetTime = new Date(targetDate).getTime();
+      const diff = Math.abs(expenseDate - targetTime);
+  
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestExpense = expense;
+      }
+    }
+  
+    return closestExpense;
   }
   
 
+
+  loadMoreExpensesAndSearch(targetDate: string) {
+    if (!this.nextUrl) return;
+
+    this.isLoading = true;
+    this.sharedFunctionService.getLazyLoadingExpenses(this.nextUrl).subscribe((response: any) => {
+      this.expensesList = [...this.expensesList, ...response.results];
+      this.nextUrl = response.next;
+      this.isLoading = false;
+      this.scrollToDate(targetDate);
+    });
+  }
 }
