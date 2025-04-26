@@ -19,7 +19,7 @@ export class AnalysisWhiteComponent {
     }
 
 
-    circumference = 2 * Math.PI * 45; 
+    circumference = 2 * Math.PI * 45;
     apiService = inject(ApiUrlsService)
     sharedFunctions = inject(FinanceService)
     selectedPeriod: string = 'daily';
@@ -78,21 +78,23 @@ export class AnalysisWhiteComponent {
     }
 
 
-    /**
-     * Fetches the top 2 expense categories for the current month.
-     * The percentage is calculated relative to the monthly income.
-     */
-    getTopCategories() {
-        this.sharedFunctions.getTopCategories().subscribe(categories => {
-            this.topCategories = categories.map((category: { category: any; total_amount: number; }) => ({
-                category: category.category,
-                amount: category.total_amount,
-                percentage: Math.round((category.total_amount / this.monthlyIncome) * 100)
-            }));
-            console.log("Top Categories:", this.topCategories, this.monthlyIncome);
-        });
+    getTopCategories(){
+        this.sharedFunctions.getTopCategories().subscribe({
+            next: (categories) =>
+                this.topCategories = categories.map((category: { category: any; total_amount: number; }) => ({
+                    category: category.category,
+                    amount: category.total_amount,
+                    percentage: this.calculateMonthlyExpensePercentageForTopCategories(category.total_amount)
+                })),
+                error : (e) => console.error(e),
+                complete: () => console.info("Top Categories:", this.topCategories, this.monthlyIncome)
+        })
     }
 
+
+    calculateMonthlyExpensePercentageForTopCategories(totalAmount: number) {
+        return Math.round((totalAmount / this.monthlyIncome) * 100)
+    }
 
     /**
     * Calculates the stroke-dashoffset for the SVG progress circle.

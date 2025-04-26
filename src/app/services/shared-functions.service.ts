@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { map, Observable, catchError } from 'rxjs';
 import { ApiUrlsService } from './api-urls.service';
 
 @Injectable({
@@ -26,8 +26,12 @@ export class FinanceService {
       this.apiService.TOTAL_BALANCE_URL,
       { headers }
     ).pipe(
-      map(response => response.total_balance)
-    );
+      map(response => response.total_balance),
+      catchError(err => {
+         console.error('Fehlerobjekt:', err);
+        throw 'error in source. Details: ' ;
+      })
+    )
   }
 
   getTotalExpenses(): Observable<number> {

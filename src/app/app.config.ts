@@ -11,12 +11,12 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(),
-    provideAnimationsAsync(),  // Um Animationen asynchron zu laden
+    provideAnimationsAsync(),  
     providePrimeNG({ 
       theme: {
         preset: Aura ,
         options: {
-          darkModeSelector: '.my-app-dark', // Dark Mode durch Toggle
+          darkModeSelector: '.my-app-dark',
           cssLayer: {
               name: 'primeng',
               order: 'app-styles, primeng, another-css-library'

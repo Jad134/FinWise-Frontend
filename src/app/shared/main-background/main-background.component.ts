@@ -8,5 +8,5 @@ import { Component, Input  } from '@angular/core';
   styleUrl: './main-background.component.scss'
 })
 export class MainBackgroundComponent {
-  @Input() headline: string = 'Headline'; // Standardtext für den Titel
+  @Input() headline: string = 'Headline';
 }

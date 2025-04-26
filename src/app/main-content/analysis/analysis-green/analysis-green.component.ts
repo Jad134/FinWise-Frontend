@@ -25,7 +25,7 @@ export class AnalysisGreenComponent {
   totalBalance: number = 0;
   totalExpenses: number | undefined;
   targetSavings: number = 1;
-  targetText: string = 'Looks goodsnsns'
+  targetText: string = 'Looks good'
 
   private totalBalance$ = new BehaviorSubject<number | undefined>(undefined);
   private targetSavings$ = new BehaviorSubject<number | undefined>(undefined);

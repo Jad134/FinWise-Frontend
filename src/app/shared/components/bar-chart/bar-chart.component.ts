@@ -55,11 +55,11 @@ export class BarChartComponent {
             },
             ticks: {
               font: {
-                size: 13, // Schriftgröße der Wochentage
-                family: 'poppins', // Schriftart
-                weight: 600, // Schriftgewicht
+                size: 13,
+                family: 'poppins', 
+                weight: 600, 
               },
-              color: 'black', // Schriftfarbe
+              color: 'black', 
             }
           },
           y: {     
